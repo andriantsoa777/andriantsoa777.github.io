@@ -1,0 +1,59 @@
+Nirina Andriantsoa                                                                                                      Ce CV a une suite.
+                                                                                                                        Version vivante, en 3D,
+Stage de fin d'études — Data Science · Data Engineering · IA                                                            90 secondes :
+                                                                                                                        andriantsoa777.github.io
+6 mois · dès fin février 2027 · basé à Marseille, mobile partout en France
+andriants.nirina@gmail.com · +33 6 21 63 82 86 · github.com/andriantsoa777
+PROFIL
+En Master 2 Science des Données, je conçois des systèmes Data & IA de bout en bout et je les mets en production : pipelines,
+machine learning, RAG, agents IA. Mon agent JobCopilot a analysé 9 605 offres et envoyé 925 candidatures seul — ce CV vient
+peut-être de lui. Je cherche un stage de 6 mois en Data Science, Data Engineering, Machine Learning ou IA générative.
+FORMATION
+Master 2 Informatique — Science des Données & Ingénierie (SID) — Aix-Marseille Université                                              2025 – 2027
+Licence Informatique — Aix-Marseille Université                                                                                        2022 – 2025
+COMPÉTENCES
+Langages : Python, SQL, TypeScript, JavaScript, Java, Swift
+Data Science & ML : Pandas, scikit-learn, XGBoost, SHAP, NLP, séries temporelles, clustering, PR-AUC / F2, calibration
+IA générative : LLM (Gemini, Ollama, Groq), RAG, agents IA, embeddings, pgvector, recherche hybride, vision, STT / TTS
+Data Engineering : PostgreSQL, DuckDB, Parquet, Redis, ETL / ELT, architecture médaillon, modèle en étoile, Celery
+Backend & DevOps : FastAPI, REST API, Docker / Podman, Linux, Git, GitHub Actions, CI/CD, Playwright
+Visualisation & Produit : Streamlit, Power BI, Plotly, Next.js, React, React Native, Three.js
+PROJETS & RÉALISATIONS TECHNIQUES
+JobCopilot — Agent IA autonome de recherche d'emploi                      Projet personnel · 2026 · en production 24 h/24 · chiffres du 26 nov. 2026
+Python · FastAPI · Celery · PostgreSQL · Redis · Playwright · Next.js · LLM · Podman
+  9 605 offres analysées, 925 candidatures envoyées seul : 17 sources, dédoublonnage, score explicable, dossier et email générés.
+  Agent de vision pour les formulaires (Workday…) : capture annotée → le LLM choisit le clic en ~4 s. Agent vocal en test : voix clonée,
+  client SIP maison, intentions TF-IDF + LR (100 % sur 10 000 appels simulés).
+  Auto-réparation : un agent de code corrige les erreurs de production, 580 tests valident, rollback automatique si la santé baisse.
+LexPipe — RAG sur la jurisprudence française                                                                             Projet académique · 2026
+Python · DuckDB · Parquet · PostgreSQL · pgvector · Docker · Streamlit
+  563 255 décisions ingérées (raw → bronze → silver → PostgreSQL), 596 456 passages vectorisés ; recherche hybride lexicale +
+  sémantique et synthèse sourcée : sans passage, pas de réponse. Évaluation annotée, CI.
+My Friends — Des amis virtuels qui vivent sans vous                                         Projet personnel · 2026 — app iPhone + web, en ligne
+Python · FastAPI · LLM · TTS / STT · Swift · CallKit
+  8 personnages IA avec mémoire longue, routine et voix propre : messages, vocaux, vrais appels iPhone (~2 s) ; chacun lit YouTube,
+  podcasts et Wikipedia et en parle spontanément.
+Nirys — Plateforme musicale & moteur de recommandation                                                       Projet personnel · 2026 — app iPhone
+FastAPI · PostgreSQL / pgvector · Redis · CLAP · Essentia · Librosa · Next.js · Rive
+ Recommandation en 4 étapes (candidats → ranking → diversification → exploration) sur événements d'écoute et embeddings audio
+ (CLAP) ; « photo → musique » par un modèle de vision.
+Auto Video Factory — Usine autonome de vidéos scientifiques                                 Projet personnel · 2026 — en production
+Python · LLM · PubMed / Crossref · TTS · FFmpeg · Whisper
+  Tendance → sources vérifiées → script → voix → montage, sans intervention ; un critique relit le MP4 et refait les scènes ratées (1 377
+  tests).
+GospelKeys AI — Professeur de piano qui entend chaque note                                                                  Projet personnel · 2026
+Python · BS-RoFormer · Transkun · YourMT3+ · Librosa · FastAPI
+  Sépare 6 instruments, transcrit le piano (2 modèles qui votent), reconnaît chaque accord par 3 preuves — 316 tests.
+Data Science & BI — FireCast · BankLens · Churn · EcomVision                                                      Projets Master SID · 2025 – 2026
+Python · scikit-learn · XGBoost · SHAP · SQL · DuckDB · Streamlit · Power BI
+ FireCast : incendies sur 9,5 M de lignes (126 799 séquences), split sans fuite du futur, 5 modèles en PR-AUC / F2, SHAP. BankLens :
+ modèle en étoile (16 tables), 28 questions SQL, 4 modèles de risque.
+GratiFaith — Application mobile publiée                                                                    Fondateur & développeur · 2025
+React Native · Expo · Firebase · Cloud Functions
+  Conçue, développée et publiée seul sur l'App Store et Google Play : authentification, cloud, notifications, groupes.
+
+EXPÉRIENCE PROFESSIONNELLE                                                                           LANGUES
+Équipier polyvalent de nuit — McDonald's Vieux-Port                     2023 – aujourd'hui           Français (courant) · Malgache (langue
+En parallèle du Master. Rythme, rigueur, équipe — et tout ce CV construit à côté.                    maternelle) · Anglais (professionnel)
+Employé polyvalent — Super K, Marseille (caisse, rayon, stocks)                2022 – 2023
+

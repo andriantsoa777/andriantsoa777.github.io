@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CV — Nirina Andriantsoa — Stage Data Science / Data Engineering / IA</title>
+<meta name="author" content="Nirina Andriantsoa">
+<meta name="keywords" content="Data Scientist, Data Engineer, Machine Learning, IA, Python, SQL, RAG, LLM, Stage de fin d'études">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Règles ATS : une seule colonne, vrai texte, titres de section standards, aucune info clé dans une image,
+     pas de tableau, ligatures désactivées (sinon « fi » devient un glyphe illisible pour certains parseurs). */
+  @page { size: A4; margin: 0; }
+  :root { --ink:#0f1b2d; --soft:#4a5568; --mute:#718096; --accent:#b4531f; --accent2:#0e5c63; --line:#e6dfd6; --paper:#fffdfa; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--paper); }
+  body { font-family: Inter, "Helvetica Neue", Arial, sans-serif; color: var(--ink); font-size: 8pt; line-height: 1.3;
+         font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "calt" 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; min-height: 297mm; padding: 9mm 12.5mm 6mm 14mm; position: relative; overflow: hidden; }
+  .page::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; background: linear-gradient(180deg, #f0a35e, var(--accent) 45%, var(--accent2)); }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 25pt; line-height: 1; letter-spacing: -0.4pt; }
+  .role { margin-top: 2.2mm; font-weight: 600; font-size: 9.6pt; color: var(--accent2); }
+  .avail { margin-top: 1mm; font-size: 8.6pt; color: var(--soft); }
+  .contact { margin-top: 2mm; font-size: 8.4pt; color: var(--ink); }
+  .contact span { white-space: nowrap; }
+  .contact span + span::before { content: "·"; margin: 0 1.6mm; color: var(--mute); }
+  .live { flex: 0 0 auto; display: flex; gap: 2.6mm; align-items: center; border: 0.3mm solid var(--line); border-radius: 2.4mm; padding: 2.2mm 2.6mm; background: #fff; }
+  .live img { width: 17mm; height: 17mm; display: block; }
+  .live p { width: 31mm; font-size: 7.4pt; line-height: 1.3; color: var(--soft); }
+  .live b { display: block; color: var(--accent); font-size: 8pt; margin-bottom: 0.6mm; }
+  .live a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  .summary { margin-top: 0; font-size: 8.3pt; line-height: 1.38; color: #1f2a3a; }
+  h2 { margin: 2.7mm 0 1.2mm; font-size: 8.4pt; letter-spacing: 0; text-transform: uppercase; color: var(--accent); font-weight: 700;
+       display: flex; align-items: center; gap: 2.4mm; }
+  h2::after { content: ""; flex: 1; height: 0.25mm; background: var(--line); }
+  .skills p { margin-top: 0.35mm; }
+  .skills p b { font-weight: 600; }
+  .skills p { color: #1f2a3a; }
+  .proj { margin-bottom: 1.3mm; break-inside: avoid; }
+  .proj-head { display: flex; justify-content: space-between; gap: 4mm; align-items: baseline; }
+  .proj h3 { font-size: 9pt; font-weight: 700; }
+  .proj h3 span { font-weight: 500; color: var(--soft); }
+  .when { font-size: 7.6pt; color: var(--mute); white-space: nowrap; }
+  .stack { font-size: 7.5pt; color: var(--accent2); font-weight: 500; margin: 0.3mm 0 0.6mm; }
+  ul { list-style: none; }
+  li { position: relative; padding-left: 3mm; margin-top: 0.4mm; color: #1f2a3a; }
+  li::before { content: ""; position: absolute; left: 0.4mm; top: 1.55mm; width: 1.1mm; height: 1.1mm; border-radius: 50%; background: var(--accent); }
+  .row { display: flex; justify-content: space-between; gap: 4mm; align-items: baseline; }
+  .row h3 { font-size: 8.8pt; font-weight: 600; }
+  .row h3 span { font-weight: 400; color: var(--soft); }
+  .item { margin-bottom: 1.3mm; }
+  .item p { color: var(--soft); }
+  .bottom { display: grid; grid-template-columns: 2.1fr 1fr; gap: 6mm; }
+  .langs span + span::before { content: "·"; margin: 0 1.6mm; color: var(--mute); }
+  footer { margin-top: 2.6mm; font-size: 7pt; color: var(--mute); }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>Nirina Andriantsoa</h1>
+      <p class="role">Stage de fin d&#39;études — Data Science · Data Engineering · IA</p>
+      <p class="avail">6 mois · dès fin février 2027 · basé à Marseille, mobile partout en France</p>
+      <p class="contact"><span>andriants.nirina@gmail.com</span><span>+33 6 21 63 82 86</span><span>github.com/andriantsoa777</span></p>
+    </div>
+    <div class="live">
+      <img src="assets/qr.svg" alt="">
+      <p><b>Ce CV a une suite.</b>Version vivante, en 3D, 90 secondes :<br><a href="https://andriantsoa777.github.io">andriantsoa777.github.io</a></p>
+    </div>
+  </header>
+
+  <h2>Profil</h2>
+  <p class="summary">En Master 2 Science des Données, je conçois des systèmes Data &amp; IA de bout en bout et je les mets en production : pipelines, machine learning, RAG, agents IA. Mon agent JobCopilot a analysé 9 605 offres et envoyé 925 candidatures seul — ce CV vient peut-être de lui. Je cherche un stage de 6 mois en Data Science, Data Engineering, Machine Learning ou IA générative.</p>
+
+  <h2>Formation</h2>
+  
+  <div class="item row"><h3>Master 2 Informatique — Science des Données &amp; Ingénierie (SID) <span>— Aix-Marseille Université</span></h3><span class="when">2025 – 2027</span></div>
+  
+  <div class="item row"><h3>Licence Informatique <span>— Aix-Marseille Université</span></h3><span class="when">2022 – 2025</span></div>
+  
+
+  <h2>Compétences</h2>
+  <div class="skills">
+    <p><b>Langages :</b> Python, SQL, TypeScript, JavaScript, Java, Swift</p><p><b>Data Science &amp; ML :</b> Pandas, scikit-learn, XGBoost, SHAP, NLP, séries temporelles, clustering, PR-AUC / F2, calibration</p><p><b>IA générative :</b> LLM (Gemini, Ollama, Groq), RAG, agents IA, embeddings, pgvector, recherche hybride, vision, STT / TTS</p><p><b>Data Engineering :</b> PostgreSQL, DuckDB, Parquet, Redis, ETL / ELT, architecture médaillon, modèle en étoile, Celery</p><p><b>Backend &amp; DevOps :</b> FastAPI, REST API, Docker / Podman, Linux, Git, GitHub Actions, CI/CD, Playwright</p><p><b>Visualisation &amp; Produit :</b> Streamlit, Power BI, Plotly, Next.js, React, React Native, Three.js</p>
+  </div>
+
+  <h2>Projets &amp; réalisations techniques</h2>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>JobCopilot <span>— Agent IA autonome de recherche d&#39;emploi</span></h3><span class="when">Projet personnel · 2026 · en production 24 h/24 · chiffres du 26 nov. 2026</span></div>
+    <p class="stack">Python · FastAPI · Celery · PostgreSQL · Redis · Playwright · Next.js · LLM · Podman</p>
+    <ul><li>9 605 offres analysées, 925 candidatures envoyées seul : 17 sources, dédoublonnage, score explicable, dossier et email générés.</li><li>Agent de vision pour les formulaires (Workday…) : capture annotée → le LLM choisit le clic en ~4 s. Agent vocal en test : voix clonée, client SIP maison, intentions TF-IDF + LR (100 % sur 10 000 appels simulés).</li><li>Auto-réparation : un agent de code corrige les erreurs de production, 580 tests valident, rollback automatique si la santé baisse.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>LexPipe <span>— RAG sur la jurisprudence française</span></h3><span class="when">Projet académique · 2026</span></div>
+    <p class="stack">Python · DuckDB · Parquet · PostgreSQL · pgvector · Docker · Streamlit</p>
+    <ul><li>563 255 décisions ingérées (raw → bronze → silver → PostgreSQL), 596 456 passages vectorisés ; recherche hybride lexicale + sémantique et synthèse sourcée : sans passage, pas de réponse. Évaluation annotée, CI.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>My Friends <span>— Des amis virtuels qui vivent sans vous</span></h3><span class="when">Projet personnel · 2026 — app iPhone + web, en ligne</span></div>
+    <p class="stack">Python · FastAPI · LLM · TTS / STT · Swift · CallKit</p>
+    <ul><li>8 personnages IA avec mémoire longue, routine et voix propre : messages, vocaux, vrais appels iPhone (~2 s) ; chacun lit YouTube, podcasts et Wikipedia et en parle spontanément.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>Nirys <span>— Plateforme musicale &amp; moteur de recommandation</span></h3><span class="when">Projet personnel · 2026 — app iPhone</span></div>
+    <p class="stack">FastAPI · PostgreSQL / pgvector · Redis · CLAP · Essentia · Librosa · Next.js · Rive</p>
+    <ul><li>Recommandation en 4 étapes (candidats → ranking → diversification → exploration) sur événements d&#39;écoute et embeddings audio (CLAP) ; « photo → musique » par un modèle de vision.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>Auto Video Factory <span>— Usine autonome de vidéos scientifiques</span></h3><span class="when">Projet personnel · 2026 — en production</span></div>
+    <p class="stack">Python · LLM · PubMed / Crossref · TTS · FFmpeg · Whisper</p>
+    <ul><li>Tendance → sources vérifiées → script → voix → montage, sans intervention ; un critique relit le MP4 et refait les scènes ratées (1 377 tests).</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>GospelKeys AI <span>— Professeur de piano qui entend chaque note</span></h3><span class="when">Projet personnel · 2026</span></div>
+    <p class="stack">Python · BS-RoFormer · Transkun · YourMT3+ · Librosa · FastAPI</p>
+    <ul><li>Sépare 6 instruments, transcrit le piano (2 modèles qui votent), reconnaît chaque accord par 3 preuves — 316 tests.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>Data Science &amp; BI <span>— FireCast · BankLens · Churn · EcomVision</span></h3><span class="when">Projets Master SID · 2025 – 2026</span></div>
+    <p class="stack">Python · scikit-learn · XGBoost · SHAP · SQL · DuckDB · Streamlit · Power BI</p>
+    <ul><li>FireCast : incendies sur 9,5 M de lignes (126 799 séquences), split sans fuite du futur, 5 modèles en PR-AUC / F2, SHAP. BankLens : modèle en étoile (16 tables), 28 questions SQL, 4 modèles de risque.</li></ul>
+  </div>
+  
+  <div class="proj">
+    <div class="proj-head"><h3>GratiFaith <span>— Application mobile publiée</span></h3><span class="when">Fondateur &amp; développeur · 2025</span></div>
+    <p class="stack">React Native · Expo · Firebase · Cloud Functions</p>
+    <ul><li>Conçue, développée et publiée seul sur l&#39;App Store et Google Play : authentification, cloud, notifications, groupes.</li></ul>
+  </div>
+  
+
+  <div class="bottom">
+    <div>
+      <h2>Expérience professionnelle</h2>
+      
+      <div class="item"><div class="row"><h3>Équipier polyvalent de nuit <span>— McDonald&#39;s Vieux-Port</span></h3><span class="when">2023 – aujourd&#39;hui</span></div><p>En parallèle du Master. Rythme, rigueur, équipe — et tout ce CV construit à côté.</p></div>
+      
+      <div class="item"><div class="row"><h3>Employé polyvalent <span>— Super K, Marseille (caisse, rayon, stocks)</span></h3><span class="when">2022 – 2023</span></div></div>
+      
+    </div>
+    <div>
+      <h2>Langues</h2>
+      <p class="langs"><span><b>Français</b> (courant)</span><span><b>Malgache</b> (langue maternelle)</span><span><b>Anglais</b> (professionnel)</span></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
