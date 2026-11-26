@@ -2,34 +2,38 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CV — Nirina Andriantsoa — Stage Data Science / Data Engineering / IA</title>
 <meta name="author" content="Nirina Andriantsoa">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
 <style>
+  @font-face { font-family: Source; src: url('assets/fonts/source-sans-3-latin-400-normal.ttf'); font-weight: 400; }
+  @font-face { font-family: Source; src: url('assets/fonts/source-sans-3-latin-600-normal.ttf'); font-weight: 600; }
+  @font-face { font-family: Source; src: url('assets/fonts/source-sans-3-latin-700-normal.ttf'); font-weight: 700; }
   /* ATS : une colonne, vrai texte, titres standards, ni ligatures ni lettres espacées.
      Tazi : une page, une seule couleur (bleu = confiance), trois tailles de texte, du blanc, gras sur l'essentiel. */
   @page { size: A4; margin: 0; }
   :root { --ink:#16202e; --soft:#4b5563; --mute:#6b7280; --blue:#1d4f91; --line:#d9e2ee; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Inter, Arial, sans-serif; color: var(--ink); font-size: 8.5pt; line-height: 1.38; background: #fff;
+  body { font-family: Source, Arial, sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.38; background: #fff;
          font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "calt" 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .page { width: 210mm; min-height: 296mm; padding: 10.5mm 15mm 5mm; }
+  .page { width: 210mm; min-height: 296mm; padding: 12mm 15mm 9mm; }
   h1 { font-size: 22pt; font-weight: 700; line-height: 1.05; letter-spacing: -0.2pt; }
   .title { margin-top: 1.6mm; font-size: 11pt; font-weight: 600; color: var(--blue); }
   .meta { margin-top: 1.2mm; color: var(--soft); }
   .meta span + span::before { content: "  |  "; color: #b8c4d4; white-space: pre; }
   .meta span { white-space: nowrap; }
-  h2 { margin: 3.6mm 0 1.5mm; padding-bottom: 0.9mm; font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase; border-bottom: 0.35mm solid var(--line); }
+  h2 { margin: 3mm 0 1.3mm; padding-bottom: 0.9mm; font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase; border-bottom: 0.35mm solid var(--line); }
   .summary { color: #243042; }
   b { font-weight: 700; color: var(--ink); }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 5mm; }
-  .row h3 { font-size: 9.4pt; font-weight: 700; }
+  .row h3 { font-size: 10.5pt; font-weight: 700; }
   .row h3 span { font-weight: 400; color: var(--soft); }
-  .when { color: var(--mute); white-space: nowrap; font-size: 8.4pt; }
+  .when { color: var(--mute); white-space: nowrap; font-size: 9pt; }
   .detail { color: var(--soft); margin-top: 0.4mm; }
-  .block { margin-bottom: 2mm; }
+  .block { margin-bottom: 1.7mm; break-inside: avoid; }
   .stack { color: var(--blue); font-size: 8.2pt; margin-top: 0.3mm; }
   ul { list-style: none; margin-top: 0.6mm; }
   li { position: relative; padding-left: 3.4mm; margin-top: 0.5mm; }
@@ -37,6 +41,16 @@
   .skills p { margin-top: 0.6mm; }
   .skills p b { color: var(--blue); }
   .more { margin-top: 1mm; color: var(--soft); }
+  @media screen and (max-width: 600px) {
+    body { font-size: 16px; }
+    .page { width: 100%; min-height: auto; padding: 24px 20px; }
+    .row { display: block; }
+    .row h3 { font-size: 1rem; }
+    .when { white-space: normal; }
+    .meta span { white-space: normal; }
+    h2 { margin-top: 24px; }
+    .block { margin-bottom: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -44,16 +58,16 @@
   <h1>Nirina Andriantsoa</h1>
   <p class="title">Stage de fin d&#39;études — Data Science · Data Engineering · IA</p>
   <p class="meta"><span>6 mois, dès fin février 2027 · Marseille, mobile partout en France</span></p>
-  <p class="meta"><span>+33 6 21 63 82 86</span><span>andriants.nirina@gmail.com</span><span>Portfolio : andriantsoa777.github.io</span></p>
+  <p class="meta"><span>+33 6 21 63 82 86</span><span>andriants.nirina@gmail.com</span><span>Portfolio : <a href="https://andriantsoa777.github.io" style="color:inherit">andriantsoa777.github.io</a></span></p>
 
   <h2>Profil</h2>
-  <p class="summary">De la donnée brute à l&#39;outil que l&#39;on utilise vraiment : je conçois des pipelines, des modèles et les applications qui vont avec, puis je les fais tourner — <b>quatre</b> de mes projets fonctionnent en continu sur un serveur Linux que j&#39;administre. Je ne crois un chiffre qu&#39;une fois vérifié, et je documente ce que je construis pour qu&#39;un autre puisse le reprendre. Je cherche une équipe data où apprendre vite et être utile dès les premières semaines.</p>
+  <p class="summary">Étudiant en Master 2 SID, je transforme les données brutes en applications utilisables : recherche sourcée sur <b>563 255 décisions de justice</b>, agents de candidature et recommandation musicale. Je développe les pipelines, les API et les interfaces, avec des contrôles et des tests. Je cherche un stage où contribuer à un produit data et progresser au contact d’une équipe.</p>
 
   <h2>Formation</h2>
   
   <div class="block">
-    <div class="row"><h3>Master 2 Informatique — Science des Données &amp; Ingénierie (SID) <span>— Aix-Marseille Université</span></h3><span class="when">2025 – 2027</span></div>
-    <p class="detail">Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, bases de données avancées et post-relationnelles, recherche opérationnelle</p>
+    <div class="row"><h3>Master Informatique — SID (Master 2 en cours) <span>— Aix-Marseille Université</span></h3><span class="when">2025 – 2027</span></div>
+    <p class="detail">Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, BDD avancées</p>
   </div>
   
   <div class="block">
@@ -65,45 +79,40 @@
   <h2>Projets et réalisations</h2>
   
   <div class="block">
-    <div class="row"><h3>LexPipe <span>— recherche dans la jurisprudence française</span></h3><span class="when">Projet de Master · 2026</span></div>
-    <p class="stack">Python · DuckDB · Parquet · PostgreSQL · pgvector · Docker</p>
-    <ul><li>Ingéré <b>563 255 décisions de justice</b> (1947-2026), couche par couche jusqu&#39;à PostgreSQL, sans doublon, avec rapport de qualité.</li><li>Construit une recherche hybride sur <b>596 456 passages</b> : elle cite le passage exact, ou ne répond pas.</li></ul>
+    <div class="row"><h3>JobCopilot <span>— agent IA de recherche d&#39;emploi</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Conception d’un pipeline de collecte, dédoublonnage et scoring expliqué d’offres ; génération des dossiers et suivi SMTP / IMAP.</li><li>Agents navigateur et vision ; prototype d’appels automatiques via SIP, STT / TTS. Garde-fous : quotas, pause d’urgence et traçabilité des envois.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>JobCopilot <span>— outil personnel de recherche de stage</span></h3><span class="when">Projet personnel · 2026 · en ligne</span></div>
-    <p class="stack">Python · FastAPI · PostgreSQL · Redis · Celery · Playwright</p>
-    <ul><li>Collecté <b>9 605 offres</b> sur <b>17 sites</b>, dédoublonnées et notées selon mon profil avec un score explicable.</li><li>Découvert qu&#39;aucun dossier n&#39;était réellement parti malgré un tableau de bord actif ; ajouté une preuve par envoi, un contrôle toutes les 5 minutes et <b>580 tests</b>.</li></ul>
+    <div class="row"><h3>LexPipe <span>— moteur de recherche dans la jurisprudence</span></h3><span class="when">Projet de Master · 2026</span></div>
+    <ul><li>Pipeline Judilibre, DuckDB / Parquet et PostgreSQL : <b>563 255 décisions</b> ingérées, <b>596 456 passages</b> vectorisés. Recherche hybride et synthèse avec citations ; abstention si aucun passage trouvé.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>FireCast <span>— prédire les départs de feux à partir de la météo</span></h3><span class="when">Projet de Master · 2026</span></div>
-    <p class="stack">Python · scikit-learn · XGBoost · SHAP</p>
-    <ul><li>Transformé <b>9,5 millions de lignes</b> en 126 799 séquences ; découpage par événement pour que le futur ne fuite pas dans l&#39;entraînement ; 5 modèles comparés (PR-AUC, F2).</li></ul>
+    <div class="row"><h3>My Friends <span>— amis virtuels qui appellent pour pratiquer l&#39;anglais</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Développement d’amis IA pour pratiquer l’anglais : mémoire des échanges, personnalités et voix distinctes, messages vocaux et appels iPhone via <b>CallKit</b>.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>BankLens <span>— données bancaires, de la source au tableau de bord</span></h3><span class="when">Projet data · 2026</span></div>
-    <p class="stack">SQL · DuckDB · Python</p>
-    <ul><li>Modélisé des données bancaires réelles en étoile (16 tables), répondu à <b>28 questions métier</b> en SQL, entraîné 4 modèles de risque.</li></ul>
+    <div class="row"><h3>Nirys <span>— plateforme musicale et recommandation</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Moteur de recommandation en <b>4 étapes</b> : candidats, classement, diversité et exploration. Signaux d’écoute, embeddings audio <b>CLAP / pgvector</b> et photo transformée en ambiance musicale.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>GratiFaith <span>— application mobile</span></h3><span class="when">Fondateur · 2025</span></div>
-    <p class="stack">React Native · Firebase</p>
-    <ul><li>Conçue, développée et <b>publiée seul</b> sur l&#39;App Store et Google Play.</li></ul>
+    <div class="row"><h3>FireCast &amp; BankLens <span>— data science et BI</span></h3><span class="when">Projets data · 2026</span></div>
+    <ul><li>FireCast : <b>9,5 M de lignes</b>, comparaison de 5 modèles avec découpage temporel anti-fuite (PR-AUC, F2). BankLens : <b>16 tables</b>, 28 questions métier SQL et 4 modèles de risque sur données de recherche.</li></ul>
   </div>
   
-  <p class="more">Autres projets : My Friends (amis virtuels, app iPhone) · Nirys (recommandation musicale) · GospelKeys (transcription de piano)</p>
+  <p class="more">Auto Video Factory : pipeline vidéo scientifique sourcé. GospelKeys : transcription de piano multi-modèles. GratiFaith : application mobile publiée sur iOS et Android.</p>
 
   <h2>Compétences</h2>
-  <div class="skills"><p><b>Langages :</b> Python, SQL, TypeScript, JavaScript, Java</p><p><b>Data Science &amp; Machine Learning :</b> Pandas, scikit-learn, XGBoost, SHAP, NLP, séries temporelles, clustering, évaluation de modèles</p><p><b>Data Engineering :</b> PostgreSQL, DuckDB, Parquet, Redis, Celery, ETL, architecture médaillon, modèle en étoile</p><p><b>IA générative :</b> LLM, RAG, embeddings, pgvector, recherche hybride</p><p><b>Outils :</b> FastAPI, Docker, Linux, Git, GitHub Actions, Streamlit, Power BI, Next.js</p><p><b>Langues :</b> Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)</p></div>
+  <div class="skills"><p><b>Langages :</b> Python, SQL, TypeScript, JavaScript, Java</p><p><b>Data Science &amp; Machine Learning :</b> Pandas, scikit-learn, XGBoost, SHAP, NLP, clustering, évaluation de modèles</p><p><b>IA générative :</b> LLM, RAG, agents, STT / TTS, embeddings, pgvector, recherche hybride</p><p><b>Data Engineering :</b> PostgreSQL, DuckDB, Parquet, Redis, Celery, ETL, modélisation dimensionnelle</p><p><b>Produit &amp; DevOps :</b> FastAPI, Next.js, React Native, Docker / Podman, Linux, Git, Playwright</p><p><b>Langues :</b> Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)</p></div>
 
   <h2>Expérience professionnelle</h2>
   
   <div class="block">
-    <div class="row"><h3>Équipier de nuit <span>— McDonald&#39;s Vieux-Port, Marseille</span></h3><span class="when">2023 – aujourd&#39;hui</span></div>
-    <p class="detail">En parallèle des études : rythme soutenu, travail en équipe, procédures strictes.</p>
+    <div class="row"><h3>Équipier polyvalent <span>— McDonald&#39;s Vieux-Port, Marseille</span></h3><span class="when">2023 – aujourd&#39;hui</span></div>
+    
   </div>
   
   <div class="block">

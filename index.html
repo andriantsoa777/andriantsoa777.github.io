@@ -1,421 +1,65 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nirina Andriantsoa — Data & IA</title>
-<meta name="description" content="La nuit, je travaille au McDonald&#39;s. Le jour, j&#39;apprends la science des données. Entre les deux, je construis. Voici ce que j&#39;ai appris en chemin.">
-<meta property="og:title" content="Nirina Andriantsoa — La nuit, je travaille au McDonald&#39;s. Le jour, j&#39;apprends la science des données.">
-<meta property="og:description" content="Entre les deux, je construis. Voici ce que j&#39;ai appris en chemin.">
-<meta property="og:image" content="https://andriantsoa777.github.io/og.png">
-<meta property="og:url" content="https://andriantsoa777.github.io">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#04060f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2304060f'/%3E%3Ccircle cx='32' cy='38' r='9' fill='%23ffc58a'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root { --a:#04060f; --b:#0b1230; --c:#2a3a6b; --fg:#f4efe6; --soft:#d6d0c4; --mute:#a59f93; --accent:#ffc58a; --line:#ffffff22;
-          --serif: Fraunces, Georgia, serif; --sans: Inter, system-ui, sans-serif; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
-  body { background: var(--a); color: var(--fg); font-family: var(--sans); overflow-x: hidden; }
-  ::selection { background: var(--accent); color: #111; }
-
-  /* Le ciel : il avance de la nuit au lever du jour, chapitre après chapitre */
-  .sky { position: fixed; inset: 0; z-index: -3; background: radial-gradient(140vmax 60vmax at 50% 118%, var(--c) 0%, transparent 62%), linear-gradient(180deg, var(--a) 0%, var(--b) 100%); }
-  #gl { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -2; display: block; }
-  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .06; mix-blend-mode: overlay;
-           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  .top { position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px, 4vw, 48px); }
-  .name { font: 500 14px var(--sans); letter-spacing: .3px; color: var(--fg); text-decoration: none; opacity: .85; }
-  .btn { font: 500 13px/1 var(--sans); color: var(--fg); background: #ffffff10; border: 1px solid var(--line); border-radius: 999px; padding: 11px 17px; text-decoration: none;
-         backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: background .3s, border-color .3s; white-space: nowrap; display: inline-block; }
-  .btn:hover { background: #ffffff1f; border-color: var(--accent); }
-  .btn.solid { background: var(--accent); color: #1c1410; border-color: var(--accent); }
-  .progress { position: fixed; left: 0; top: 0; height: 2px; width: 100%; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, #4a5a9a, var(--accent)); z-index: 21; }
-
-  main { position: relative; z-index: 1; }
-  section { min-height: 135vh; display: flex; align-items: center; padding: 20vh clamp(18px, 8vw, 140px); }
-  section.right { justify-content: flex-end; }
-  section.center { justify-content: center; text-align: center; }
-  .card { max-width: 560px; }
-  .center .card { max-width: 760px; }
-  .eyebrow { font: 500 12px/1.4 var(--sans); letter-spacing: 3px; text-transform: uppercase; color: var(--accent); opacity: .9; }
-  h1, h2 { font-family: var(--serif); font-weight: 300; letter-spacing: -0.015em; line-height: 1.08; }
-  h1 { font-size: clamp(2.3rem, 5.6vw, 5rem); margin: 20px 0 24px; }
-  h2 { font-size: clamp(2rem, 4.6vw, 4rem); margin: 18px 0 22px; }
-  .text { font-size: clamp(1.02rem, 1.3vw, 1.15rem); line-height: 1.75; color: var(--soft); font-weight: 300; }
-  .note { margin-top: 28px; font-size: 13px; color: var(--mute); }
-  .link { margin-top: 22px; }
-  .end { margin-top: 56px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.1rem, 1.8vw, 1.4rem); color: var(--fg); }
-  .cta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
-  .cta .btn { font-size: 14px; padding: 14px 20px; }
-  .scroll { margin-top: 48px; width: 1px; height: 54px; background: linear-gradient(var(--accent), transparent); animation: cue 2.4s ease-in-out infinite; transform-origin: top; }
-  @keyframes cue { 0%,100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
-
-  /* Les mots arrivent dans l'ordre de lecture */
-  .reveal .w { display: inline-block; opacity: 0; transform: translateY(.45em); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i) * 40ms); }
-  .in .reveal .w { opacity: 1; transform: none; }
-  .fade { opacity: 0; transform: translateY(14px); transition: opacity 1.1s ease .35s, transform 1.1s ease .35s; }
-  .in .fade { opacity: 1; transform: none; }
-
-  .nogl #gl { display: none; }
-  @media (max-width: 720px) {
-    section { min-height: 120vh; padding: 16vh 20px; align-items: flex-end; }
-    section.right { justify-content: flex-start; }
-    .card { background: color-mix(in srgb, var(--a) 55%, transparent); padding: 20px; border-radius: 18px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-    #port .card { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 0; }
-    #port { align-items: center; padding-top: 24vh; }
-    .top { background: linear-gradient(var(--a) 60%, transparent); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll { animation: none; }
-    .reveal .w, .fade { transition: none; opacity: 1; transform: none; }
-  }
-</style>
+<meta name="description" content="De la donnée brute à l’outil qui sert vraiment. Stage Data / IA de 6 mois dès fin février 2027. Projets, démarche et CV de Nirina Andriantsoa.">
+<meta property="og:title" content="Nirina Andriantsoa — De la donnée à l’usage"><meta property="og:description" content="Des systèmes qui cherchent, parlent et écoutent. Explorez mes projets Data & IA."><meta property="og:image" content="https://andriantsoa777.github.io/og.png"><meta property="og:url" content="https://andriantsoa777.github.io/"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#080e19">
+<link rel="canonical" href="https://andriantsoa777.github.io/"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080e19'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='serif' font-size='30' fill='%239ee6dc'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="sky" id="sky"></div>
-<canvas id="gl" aria-hidden="true"></canvas>
-<div class="grain"></div>
-<div class="progress" id="progress"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="atmosphere" aria-hidden="true"></div><canvas id="scene" aria-hidden="true"></canvas><div class="grain" aria-hidden="true"></div>
+<header class="top"><a class="brand" href="#top" aria-label="Nirina Andriantsoa, accueil">N<span>.</span> A</a><nav aria-label="Navigation principale"><a href="#projects">Projets</a><a href="#approach">Démarche</a><a href="#contact">Contact</a><a class="button small" href="CV_Nirina_Andriantsoa.pdf">Mon CV <span class="format">PDF</span></a></nav></header>
+<button class="motion" id="motion" type="button" hidden aria-pressed="false">Mettre l’animation en pause</button>
+<main id="main">
+<section class="hero" id="top" data-world="hero">
+ <div class="hero-copy"><p class="eyebrow">Data Science · Data Engineering · IA</p><p class="byline">Nirina Andriantsoa · Master 2 SID</p><h1>De la donnée brute<br>à l’outil qui <em>sert vraiment.</em></h1><p class="lede">Je suis Nirina, étudiant en Master 2 SID. Je construis des moteurs de recherche, des agents et des expériences audio. Voici les problèmes derrière mes projets — et comment je les aborde.</p><div class="actions"><a class="button solid" href="#projects">Explorer mes projets</a><a class="text-link" href="CV_Nirina_Andriantsoa.pdf">Lire mon CV</a></div><p class="availability">Stage de 6 mois · dès fin février 2027<br>Marseille · mobile partout en France</p></div>
+ <div class="orbit-caption" aria-hidden="true"><span>Collecter · comprendre · construire</span><p>Une idée prend forme.</p><small>Scène 3D interactive au mouvement du pointeur</small></div>
+ <a class="scroll-cue" href="#projects">Les projets, au-delà des mots</a>
+</section>
+<section class="intro" id="projects" data-world="hero"><div><p class="eyebrow">L’atelier</p><h2>Pas seulement des modèles.<br><em>Des systèmes complets.</em></h2><p>Un problème concret, des choix techniques, des limites explicites. Chaque projet raconte ce que j’ai construit — pas ce qu’un outil promet.</p></div><div class="numbers"><p><strong>563 255</strong><span>décisions dans le corpus LexPipe</span></p><p><strong>4 étapes</strong><span>pour recommander une musique</span></p><p><strong>6 mois</strong><span>de stage dès fin février 2027</span></p></div><nav class="project-index" aria-label="Accès direct aux projets"><a href="#jobcopilot">JobCopilot</a><a href="#lexpipe">LexPipe</a><a href="#friends">My Friends</a><a href="#nirys">Nirys</a><a href="#factory">Auto Video Factory</a><a href="#gospelkeys">GospelKeys</a><a href="#firecast">FireCast</a></nav></section>
 
-<header class="top">
-  <a class="name" href="#port">Nirina Andriantsoa</a>
-  <a class="btn" href="CV_Nirina_Andriantsoa.pdf" download>CV (PDF)</a>
-</header>
+<section class="world" id="jobcopilot" data-world="jobcopilot">
+ <div class="world-title"><p class="eyebrow">Agent IA</p><h2>JobCopilot</h2><p class="hook">Pour trouver mon stage, j’ai construit un agent. Puis j’ai dû lui apprendre à ne pas envoyer n’importe quoi.</p><p class="status">Application déployée · voix en test</p><div class="results"><span>Scoring explicable</span><span>SMTP / IMAP</span><span>Appels : prototype</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>Chercher un stage, c&#39;est des centaines d&#39;offres sur des dizaines de sites, et des formulaires tous différents.</p><h3>Ce que j’ai construit</h3><ul><li>Collecte d’offres, dédoublonnage et score expliqué selon le profil ; génération d’un CV et d’un email, suivi SMTP / IMAP.</li><li>Remplissage de formulaires avec Playwright et analyse visuelle de pages ; sessions et interventions humaines prévues pour les blocages.</li><li>Prototype d’appels automatiques : client SIP, reconnaissance de la parole et synthèse vocale. La qualité en conditions réelles reste en cours de validation.</li><li>Pause d’urgence, quotas, validation des documents par empreinte et protection contre les envois ambigus ou en double.</li></ul><p class="stack">Python · FastAPI · PostgreSQL · Redis · Celery · Playwright · LLM vision · Podman</p><details><summary>Preuves, périmètre et limites</summary><p>Fonctions vérifiées dans le code et la documentation de JobCopilot.</p><p>Les sites et formulaires ne sont pas tous compatibles. Les appels et la voix sont encore en test ; un test automatisé ne prouve pas un recrutement réussi.</p></details></article>
+</section>
 
-<main>
+<section class="world" id="lexpipe" data-world="lexpipe">
+ <div class="world-title"><p class="eyebrow">RAG &amp; Data Engineering</p><h2>LexPipe</h2><p class="hook">563 255 décisions de justice. On pose une question en français, il retrouve le passage exact. Et s&#39;il ne sait pas, il se tait.</p><p class="status">Projet de Master · corpus local</p><div class="results"><span>563 255 décisions</span><span>596 456 passages</span><span>1947 → 2026</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>La jurisprudence française est immense, et un modèle de langage qui invente une décision est pire qu&#39;inutile.</p><h3>Ce que j’ai construit</h3><ul><li>Pipeline de l&#39;API Judilibre jusqu&#39;à PostgreSQL, couche par couche (brut, bronze, argent), sans doublon, avec rapport de qualité.</li><li>596 456 passages vectorisés (MPNet, 768 dimensions) et recherche hybride : mots exacts + sens.</li><li>Synthèse extractive par défaut, citations vers les passages ; abstention quand aucun passage n’est retrouvé. Évaluation sur des requêtes annotées.</li></ul><p class="stack">Python · DuckDB · Parquet · PostgreSQL · pgvector · Docker · Streamlit</p><details><summary>Preuves, périmètre et limites</summary><p>Volumes constatés dans la base locale le 24 novembre 2026 ; reconstruction documentée.</p><p>245 000 décisions sont vectorisées sur 563 255 ingérées. Le code a été reconstruit en novembre à partir des sources retrouvées ; ce n’est pas un service juridique.</p></details></article>
+</section>
 
-  
-  <section id="port" class="center"
-           data-scene="harbor" data-sky="#04060f,#0b1230,#2a3a6b">
-    <div class="card">
-      <p class="eyebrow fade">Marseille, Vieux-Port</p>
-      <h1 class="reveal">La nuit, je travaille au McDonald&#39;s. Le jour, j&#39;apprends la science des données.</h1>
-      <p class="text fade">Entre les deux, je construis. Voici ce que j&#39;ai appris en chemin.</p>
-      <p class="note fade">Nirina Andriantsoa · Master 2 Science des Données, Aix-Marseille Université</p><div class="scroll fade" style="margin-left:auto;margin-right:auto"></div>
-      
-      
-    </div>
-  </section>
+<section class="world" id="friends" data-world="friends">
+ <div class="world-title"><p class="eyebrow">IA conversationnelle · iOS</p><h2>My Friends</h2><p class="hook">Ils ont une voix, une mémoire et une vie fictive. Et ils m’appellent pour me faire parler anglais.</p><p class="status">Application personnelle · iPhone</p><div class="results"><span>Mémoire conversationnelle</span><span>CallKit</span><span>Répétition espacée</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>On progresse en anglais en parlant tous les jours. Les applications font réciter ; personne ne vous appelle.</p><h3>Ce que j’ai construit</h3><ul><li>Personnages IA avec métier, routine, personnalité, voix et mémoire des conversations.</li><li>Appels iPhone via CallKit, messages vocaux et groupes ; mémorisation des sujets abordés au téléphone.</li><li>Chaque ami lit YouTube, des podcasts, Wikipedia — et vous en parle. Les mots appris reviennent à J+1, J+2… J+32.</li></ul><p class="stack">Python · FastAPI · LLM · speech-to-text · TTS · Swift · CallKit</p><details><summary>Preuves, périmètre et limites</summary><p>Fonctionnalités documentées dans le dépôt privé ami-ia.</p><p>Personnages explicitement fictifs. Les appels en arrière-plan dépendent de la configuration APNs et de la signature iOS ; la latence dépend du fournisseur.</p></details></article>
+</section>
 
-  
-  <section id="outil" class=""
-           data-scene="sorting" data-sky="#050816,#101a3d,#3a3f78">
-    <div class="card">
-      <p class="eyebrow fade">Automne 2026</p>
-      <h2 class="reveal">Pour trouver mon stage, j&#39;ai construit mon propre outil.</h2>
-      <p class="text fade">JobCopilot lit les offres de 17 sites, retire les doublons, les compare à mon profil et prépare chaque dossier. Sur l&#39;écran, les chiffres montaient tous les jours.</p>
-      
-      
-      
-    </div>
-  </section>
+<section class="world" id="nirys" data-world="nirys">
+ <div class="world-title"><p class="eyebrow">Recommandation · Audio</p><h2>Nirys</h2><p class="hook">Montrez-lui une photo de coucher de soleil. Il vous répond en musique.</p><p class="status">Application personnelle · audio</p><div class="results"><span>4 étapes de recommandation</span><span>analyse audio</span><span>app iPhone</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>Les recommandations tournent en rond : toujours les mêmes artistes, jamais la surprise juste.</p><h3>Ce que j’ai construit</h3><ul><li>Moteur en 4 étapes : candidats, classement, diversité, découverte — appris sur les écoutes, les passages et les réécoutes.</li><li>Le son lui-même est analysé (CLAP, Librosa) et rangé dans PostgreSQL / pgvector.</li><li>Un modèle de vision transforme une photo en ambiance musicale ; un petit personnage animé guide l&#39;écoute.</li></ul><p class="stack">FastAPI · PostgreSQL / pgvector · Redis · CLAP · Essentia · Librosa · Next.js · Rive</p><details><summary>Preuves, périmètre et limites</summary><p>Architecture et signaux de recommandation vérifiés dans nirina-music-ai.</p><p>Projet personnel, sans mesure publiée de gain de pertinence. L’analyse par photo propose une ambiance ; elle ne garantit pas les goûts d’un auditeur.</p></details></article>
+</section>
 
-  
-  <section id="panne" class="right"
-           data-scene="frozen" data-sky="#07090d,#151a22,#2b3240">
-    <div class="card">
-      <p class="eyebrow fade">Un soir d&#39;octobre</p>
-      <h2 class="reveal">Mais rien n&#39;était parti.</h2>
-      <p class="text fade">J&#39;ai vérifié à la main. Pas une seule candidature envoyée. Le serveur avait perdu l&#39;accès à Internet et rien ne le signalait. L&#39;écran, lui, affichait toujours ses chiffres.</p>
-      
-      
-      
-    </div>
-  </section>
+<section class="world" id="factory" data-world="factory">
+ <div class="world-title"><p class="eyebrow">Pipeline multimodal</p><h2>Auto Video Factory</h2><p class="hook">Une usine qui fabrique des vidéos scientifiques, puis les regarde — et refait les scènes qui ne vont pas.</p><p class="status">Pipeline personnel · branches expérimentales</p><div class="results"><span>PubMed / Crossref</span><span>Montage FFmpeg</span><span>Critique et réparation</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>Une vidéo de vulgarisation demande des heures de recherche, d&#39;écriture, de voix et de montage — et une seule erreur ruine la confiance.</p><h3>Ce que j’ai construit</h3><ul><li>Détection des sujets qui montent, recherche dans PubMed et Crossref, vérification de chaque affirmation.</li><li>Script, voix, musique, montage FFmpeg calé sur l&#39;audio réel.</li><li>Un critique automatique relit la vidéo finale et répare les scènes fautives.</li></ul><p class="stack">Python · LLM · PubMed / Crossref · TTS · Whisper · FFmpeg</p><details><summary>Preuves, périmètre et limites</summary><p>README et documentation des branches V61 / V62 ; ne pas confondre code local et version serveur.</p><p>La génération n’est pas une validation scientifique. Revue humaine du fichier final avant publication ; les dernières branches de réalisation restent locales.</p></details></article>
+</section>
 
-  
-  <section id="preuve" class=""
-           data-scene="flow" data-sky="#03100f,#0a2a2a,#1f6b62">
-    <div class="card">
-      <p class="eyebrow fade">Ce que j&#39;en ai retenu</p>
-      <h2 class="reveal">Depuis, je ne crois plus un chiffre sans preuve.</h2>
-      <p class="text fade">Chaque envoi laisse une trace qu&#39;on peut vérifier. Toutes les cinq minutes, un contrôle s&#39;assure que tout tourne et répare ce qui casse. Aujourd&#39;hui, je sais ce qui est arrivé à chacune des 9 605 offres.</p>
-      
-      
-      
-    </div>
-  </section>
+<section class="world" id="gospelkeys" data-world="gospelkeys">
+ <div class="world-title"><p class="eyebrow">Audio ML</p><h2>GospelKeys</h2><p class="hook">Donnez-lui une chanson gospel. Il vous montre quelles touches jouer — et pourquoi.</p><p class="status">Prototype · audio ML</p><div class="results"><span>6 familles instrumentales</span><span>Fusion de transcriptions</span><span>Confiance par note</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>Apprendre un morceau à l&#39;oreille prend des semaines ; les partitions de gospel n&#39;existent presque pas.</p><h3>Ce que j’ai construit</h3><ul><li>Séparation en 6 instruments (BS-RoFormer) pour isoler le piano.</li><li>Transcription principale Transkun et seconde opinion YourMT3+ : fusion par hauteur et attaque, avec contrôle spectral des notes détectées.</li><li>Chaque accord reconnu à partir de 3 indices : spectre, notes, basse — et un clavier virtuel qui s&#39;allume.</li></ul><p class="stack">Python · BS-RoFormer · Transkun · YourMT3+ · Librosa · FastAPI</p><details><summary>Preuves, périmètre et limites</summary><p>Pipeline et limites documentés dans GospelKeys AI.</p><p>Modèles optionnels et coûteux à exécuter ; notes et accords restent des hypothèses, avec confiance affichée. La démo seule ne prouve pas une transcription réelle.</p></details></article>
+</section>
 
-  
-  <section id="lexpipe" class="right"
-           data-scene="strata" data-sky="#0d0a07,#2a1f15,#7a5a34">
-    <div class="card">
-      <p class="eyebrow fade">LexPipe · projet de Master</p>
-      <h2 class="reveal">563 255 décisions de justice. Une question.</h2>
-      <p class="text fade">On pose une question en français ; LexPipe retrouve les décisions qui y répondent et montre le passage exact. S&#39;il ne trouve rien, il ne répond pas. Je préfère un silence à une invention.</p>
-      
-      
-      
-    </div>
-  </section>
+<section class="world" id="firecast" data-world="firecast">
+ <div class="world-title"><p class="eyebrow">Data Science</p><h2>FireCast</h2><p class="hook">Prédire un départ de feu à partir de la météo. Le piège : un modèle peut avoir l&#39;air brillant — et tricher.</p><p class="status">Projet data · résultats publics</p><div class="results"><span>9,5 M de lignes</span><span>Découpage anti-fuite</span><span>5 modèles comparés</span></div></div>
+ <article class="panel"><h3>Le point de départ</h3><p>Avec des données temporelles, laisser le futur fuiter dans l&#39;entraînement donne des scores parfaits… et faux.</p><h3>Ce que j’ai construit</h3><ul><li>9,5 millions de lignes transformées en 126 799 séquences de 75 jours : 60 jours pour apprendre, 15 pour vérifier.</li><li>Découpage par événement, test de résistance sur 2024-2025, seuil d&#39;alerte choisi sans toucher au test.</li><li>5 modèles comparés en PR-AUC et F2, calibration, explications SHAP, observatoire Streamlit.</li></ul><p class="stack">Python · scikit-learn · XGBoost · SHAP · Streamlit</p><details><summary>Preuves, périmètre et limites</summary><p>Rapport public, protocole temporel et comparaisons de modèles.</p><p>Résultats expérimentaux sur le jeu étudié, pas un système d’alerte incendie opérationnel. Les scores se lisent avec le protocole et les limites.</p></details><a class="text-link" href="https://andriantsoa777.github.io/feux-de-foret-resultats/" target="_blank" rel="noopener noreferrer">Voir les résultats</a></article>
+</section>
 
-  
-  <section id="perte" class=""
-           data-scene="crumble" data-sky="#060506,#171217,#3a2a2e">
-    <div class="card">
-      <p class="eyebrow fade">Quelques mois plus tard</p>
-      <h2 class="reveal">Un jour, une partie du code a disparu.</h2>
-      <p class="text fade">La base de données, elle, avait tenu. J&#39;ai tout reconstruit à partir de ma documentation et de mes notebooks. Depuis, je documente chaque projet comme si quelqu&#39;un d&#39;autre devait le reprendre demain.</p>
-      
-      
-      
-    </div>
-  </section>
-
-  
-  <section id="feux" class="right"
-           data-scene="forest" data-sky="#050c08,#10261a,#5b3a1c">
-    <div class="card">
-      <p class="eyebrow fade">FireCast · projet de Master</p>
-      <h2 class="reveal">Un modèle peut avoir l&#39;air brillant — et tricher.</h2>
-      <p class="text fade">Pour prédire les départs de feux à partir de la météo : 9,5 millions de lignes. Le piège, c&#39;est de laisser le futur se glisser dans l&#39;entraînement. J&#39;ai découpé par événement et choisi le seuil d&#39;alerte sans toucher aux données de test. Un bon score ne vaut rien s&#39;il triche.</p>
-      
-      <p class="link fade"><a class="btn" href="https://andriantsoa777.github.io/feux-de-foret-resultats/" target="_blank" rel="noopener">Voir les résultats ↗</a></p>
-      
-    </div>
-  </section>
-
-  
-  <section id="perso" class=""
-           data-scene="friends" data-sky="#0c0a1f,#2a1f4a,#8a5a7a">
-    <div class="card">
-      <p class="eyebrow fade">Le reste du temps</p>
-      <h2 class="reveal">Et parfois, je construis juste pour moi.</h2>
-      <p class="text fade">Pour parler anglais tous les jours : huit amis virtuels qui écrivent, envoient des vocaux et m&#39;appellent. Pour ma musique : un moteur de recommandation. Et GratiFaith, une application publiée sur l&#39;App Store et Google Play.</p>
-      
-      
-      
-    </div>
-  </section>
-
-  
-  <section id="aube" class="center"
-           data-scene="sunrise" data-sky="#2a2346,#c0707a,#ffc58a">
-    <div class="card">
-      <p class="eyebrow fade">Fin février 2027</p>
-      <h2 class="reveal">Je cherche une équipe où mes données serviront à quelqu&#39;un.</h2>
-      <p class="text fade">Un stage de fin d&#39;études de 6 mois en Data Science, Data Engineering ou IA, partout en France. J&#39;arrive avec l&#39;habitude de tout vérifier, et l&#39;envie d&#39;apprendre auprès de gens meilleurs que moi.</p>
-      
-      
-      
-      <div class="cta fade">
-        <a class="btn solid" data-mail href="#">M'écrire</a>
-        <a class="btn" data-tel href="#">M'appeler</a>
-        <a class="btn" href="CV_Nirina_Andriantsoa.pdf" download>CV (PDF)</a>
-        <a class="btn" href="https://github.com/andriantsoa777" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-      <p class="end fade">Merci d&#39;avoir lu jusqu&#39;au lever du jour.</p>
-      
-    </div>
-  </section>
-
+<section class="approach" id="approach" data-world="hero"><p class="eyebrow">Ce qui relie ces projets</p><h2>La curiosité lance l’idée.<br><em>La rigueur la fait tenir.</em></h2><div class="principles"><article><h3>Partir d’un usage</h3><p>Retrouver une décision, pratiquer une langue, comprendre un accord. La technique vient après le problème.</p></article><article><h3>Vérifier avant d’affirmer</h3><p>Citer les sources, séparer entraînement et test, montrer les incertitudes. Un grand chiffre n’est pas une preuve de qualité.</p></article><article><h3>Aller jusqu’à l’interface</h3><p>Pipelines, API, déploiement, expérience utilisateur : apprendre aussi ce qui se passe après le notebook.</p></article></div></section>
+<section class="more" data-world="hero"><p class="eyebrow">D’autres terrains d’exploration</p><h2>La suite de l’atelier.</h2><div class="more-grid"><article><h3><a href="https://github.com/andriantsoa777/banklens" target="_blank" rel="noopener noreferrer">BankLens</a></h3><p>Jeux de recherche anonymisés, 16 tables, 28 questions métier SQL et 4 modèles de risque ; limites documentées.</p></article><article><h3>GratiFaith</h3><p>Application mobile bilingue, publiée seul sur l&#39;App Store et Google Play.</p></article><article><h3>Lumen</h3><p>Transforme des vidéos YouTube en résumés, chapitres et quiz, avec une IA locale ; app iPhone.</p></article><article><h3><a href="https://andriantsoa777.github.io/career-simulator/" target="_blank" rel="noopener noreferrer">Career Simulator</a></h3><p>Vivre une journée dans un métier de la data.</p></article><article><h3>AU-DELÀ</h3><p>Expérience web immersive en 3D, quatorze chapitres.</p></article><article><h3>Customer Churn &amp; EcomVision</h3><p>XGBoost expliqué par SHAP et servi par API ; segmentation RFM et K-Means.</p></article></div></section>
+<section class="contact" id="contact" data-world="hero"><p class="eyebrow">Construire avec une équipe</p><h2>Le prochain problème à résoudre ?</h2><p>Stage de fin d&#39;études de 6 mois en Data Science, Data Engineering ou IA, dès fin février 2027, partout en France.</p><div class="actions"><a class="button solid" href="mailto:andriants.nirina@gmail.com?subject=Stage%20Data%20IA%20%E2%80%94%20%C3%A9changeons">Échangeons</a><a class="button" href="CV_Nirina_Andriantsoa.pdf" download>Télécharger mon CV</a></div><a class="email" href="mailto:andriants.nirina@gmail.com">andriants.nirina@gmail.com</a><a href="tel:+33621638286">+33 6 21 63 82 86</a><p class="closing">Une question sur un projet ? Je vous montre les choix, le code et ce que j’améliorerais.</p></section>
 </main>
-
-<noscript><p style="padding:20px">andriants.nirina [at] gmail.com</p></noscript>
-<script>
-  // Coordonnées assemblées dans le navigateur, pour éviter les robots qui aspirent les adresses.
-  (function () {
-    const mail = ["andriants", "nirina"].join(".") + "@" + ["gmail", "com"].join("."), tel = "+33" + "621" + "638" + "286";
-    document.querySelectorAll("[data-mail]").forEach(a => a.href = "mailto:" + mail + "?subject=" + encodeURIComponent("Stage data — prenons 15 minutes"));
-    document.querySelectorAll("[data-tel]").forEach(a => a.href = "tel:" + tel);
-  })();
-</script>
-<script type="module">
-import * as THREE from "./assets/vendor/three.module.min.js";
-
-const sections = [...document.querySelectorAll("main section")];
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const N = innerWidth < 720 ? 6500 : 9000;
-
-/* ---------- Texte ---------- */
-document.querySelectorAll(".reveal").forEach(el => {
-  el.innerHTML = el.textContent.trim().split(/\s+/).map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(" ");
-});
-const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), { threshold: .22 });
-sections.forEach(s => io.observe(s));
-
-/* ---------- Ciel ---------- */
-const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
-const skies = sections.map(s => s.dataset.sky.split(",").map(hex));
-const lerp3 = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
-const rgb = c => `rgb(${c[0]},${c[1]},${c[2]})`;
-const root = document.documentElement.style, bar = document.getElementById("progress").style;
-
-/* ---------- Scènes : chaque forme illustre la phrase qu'on lit ---------- */
-let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-const g = () => { let u = 0, v = 0; while (!u) u = rnd(); while (!v) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(6.2832 * v); };
-const make = fn => { const a = new Float32Array(N * 3); for (let i = 0; i < N; i++) { const q = fn(i); a[i*3] = q[0]; a[i*3+1] = q[1]; a[i*3+2] = q[2]; } return a; };
-const H = -1.6; // ligne d'horizon / niveau de l'eau (bas de l'écran : le texte reste au-dessus)
-// Immeubles du port : fenêtres allumées sur des façades, reflet dans l'eau, quelques étoiles.
-const bld = Array.from({ length: 34 }, (_, k) => ({ x: -6.6 + k * .4 + (rnd() - .5) * .1, w: .22 + rnd() * .14, h: .35 + Math.pow(rnd(), 1.6) * 1.7, z: -1 - rnd() * 1.4 }));
-const SH = {
-  harbor: make(i => {
-    const r = i % 10;
-    if (r === 0) return [(rnd() - .5) * 15, 1.2 + rnd() * 3.2, -5 - rnd() * 3];                        // étoiles
-    const b = bld[Math.floor(rnd() * bld.length)];
-    const p = [b.x + (rnd() - .5) * b.w, H + Math.floor(rnd() * b.h * 14) / 14, b.z];
-    if (r < 4) return [p[0] + g() * .02, H - (p[1] - H) * .9 - .05, p[2] + .6];                           // reflet
-    return p;
-  }),
-  sorting: make(i => {                                                                                    // barres qui montent
-    const k = i % 14, x = (k - 6.5) * .36, h = .4 + Math.pow((k + 1) / 14, 1.3) * 2.6;
-    return [x + (rnd() - .5) * .2, -1.5 + rnd() * h, (rnd() - .5) * .45];
-  }),
-  frozen: null,
-  flow: make(() => {                                                                                      // un flux qui passe un contrôle
-    if (rnd() < .14) { const t = rnd() * 6.2832; return [0, Math.sin(t) * 1.05, Math.cos(t) * 1.05 * .5]; }
-    const x = (rnd() - .5) * 5; const sp = .15 + Math.abs(x) * .05;
-    return [x, g() * sp, g() * sp * .7];
-  }),
-  strata: make(() => {                                                                                    // couches de données empilées
-    const layer = Math.floor(rnd() * 4), y0 = -1.5 + layer * .8;
-    return [(rnd() - .5) * 3.2, y0 + Math.floor(rnd() * 4) * .07, (rnd() - .5) * 2];
-  }),
-  crumble: null,
-  forest: make(i => {                                                                                     // forêt, braises
-    if (i % 9 === 0) return [(rnd() - .5) * 7, -1 + rnd() * 2.8, (rnd() - .5) * 3];
-    const tx = Math.floor(rnd() * 26), tz = Math.floor(rnd() * 8), cx = (tx - 13) * .3 + Math.sin(tz * 7) * .1, cz = (tz - 4) * .4;
-    const h = rnd(), r = (1 - h) * .14;
-    const a = rnd() * 6.2832;
-    return [cx + Math.cos(a) * r, -1.5 + h * (.6 + Math.abs(Math.sin(tx * 3.7)) * .45), cz + Math.sin(a) * r];
-  }),
-  friends: make(i => {                                                                                    // huit amis
-    if (i % 6 === 0) { const t = rnd() * 6.2832; return [Math.cos(t) * 2.3, g() * .02, Math.sin(t) * 2.3]; }
-    const k = i % 8, a = k / 8 * 6.2832, r = .26 * Math.cbrt(rnd()), u = rnd() * 6.2832, v = Math.acos(2 * rnd() - 1);
-    return [Math.cos(a) * 2.3 + r * Math.sin(v) * Math.cos(u), Math.sin(a * 3) * .18 + r * Math.cos(v), Math.sin(a) * 2.3 + r * Math.sin(v) * Math.sin(u)];
-  }),
-  sunrise: make(i => {                                                                                    // le soleil sur la mer
-    if (i % 3 === 0) { const r = Math.sqrt(rnd()) * 1.15, t = rnd() * Math.PI; return [Math.cos(t) * r, H + Math.sin(t) * r + .05, -3]; }
-    const z = -3 + rnd() * 4.5, spread = 7.5;
-    const x = (rnd() - .5) * spread * (1 + (z + 3) * .25);
-    const col = rnd() < .35 ? (rnd() - .5) * .7 * (1 + (z + 3) * .3) : x;
-    return [col, H - .02 - (z + 3) * .1, z];
-  })
-};
-SH.frozen = SH.sorting.map((v, i) => (i % 3 === 1 ? v * .94 - .05 : v));                                  // même écran, figé
-SH.crumble = make(i => {                                                                                 // la moitié haute s'effondre
-  const x = SH.strata[i*3], y = SH.strata[i*3+1], z = SH.strata[i*3+2];
-  if (y < -.5) return [x, y, z];
-  return [x * 1.5 + g() * .6, -1.6 + Math.abs(g()) * .12, z * 1.4 + g() * .5];
-});
-
-const scene = sections.map(s => s.dataset.scene);
-const PAL = { harbor: ["#ffd59a", "#ffb35c"], sorting: ["#ffd59a", "#9db8ff"], frozen: ["#8d96a6", "#5b6474"], flow: ["#a8f0d6", "#ffd59a"],
-  strata: ["#f1d3a5", "#b98a52"], crumble: ["#e2c29a", "#a07a58"], forest: ["#4f8a5e", "#ff9a4a"], friends: ["#ffd1e0", "#b9a6ff"], sunrise: ["#fff1c9", "#ff9a6a"] };
-const STILL = { frozen: 1, crumble: .6 };
-
-let renderer;
-try { renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: false, alpha: true }); }
-catch (e) { document.body.classList.add("nogl"); }
-
-function stateAt(y) {
-  const c = y + innerHeight * .5; let i = 0;
-  for (let k = 0; k < sections.length; k++) if (sections[k].offsetTop <= c) i = k;
-  const s = sections[i], t = Math.min(Math.max((c - s.offsetTop) / s.offsetHeight, 0), 1);
-  const j = Math.min(i + 1, sections.length - 1);
-  return { i, j, t, m: i === j ? 0 : Math.min(Math.max((t - .64) / .36, 0), 1) };
-}
-function paintSky(i, j, m, y) {
-  const a = skies[i], b = skies[j];
-  root.setProperty("--a", rgb(lerp3(a[0], b[0], m))); root.setProperty("--b", rgb(lerp3(a[1], b[1], m))); root.setProperty("--c", rgb(lerp3(a[2], b[2], m)));
-  document.body.style.background = rgb(lerp3(a[0], b[0], m));
-  bar.transform = `scaleX(${Math.min(1, y / Math.max(1, document.documentElement.scrollHeight - innerHeight))})`;
-}
-
-if (renderer) {
-  const sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(48, innerWidth / innerHeight, .1, 100);
-  cam.position.set(0, 0, 7.4);
-  const geo = new THREE.BufferGeometry(), rand = new Float32Array(N);
-  for (let i = 0; i < N; i++) rand[i] = rnd();
-  geo.setAttribute("position", new THREE.BufferAttribute(SH.harbor.slice(), 3));
-  geo.setAttribute("aTo", new THREE.BufferAttribute(SH.harbor.slice(), 3));
-  geo.setAttribute("aRand", new THREE.BufferAttribute(rand, 1));
-  const U = { uMix: { value: 0 }, uTime: { value: 0 }, uPR: { value: Math.min(devicePixelRatio, 2) }, uSize: { value: innerWidth < 720 ? 40 : 52 },
-    uA: { value: new THREE.Color() }, uB: { value: new THREE.Color() }, uStill: { value: 0 }, uFlow: { value: 0 }, uWater: { value: 1 }, uEmber: { value: 0 } };
-  const mat = new THREE.ShaderMaterial({ uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    vertexShader: `
-      attribute vec3 aTo; attribute float aRand;
-      uniform float uMix, uTime, uPR, uSize, uStill, uFlow, uWater, uEmber;
-      varying float vR; varying float vGate; varying float vBright;
-      void main(){
-        float m = clamp(uMix * 1.5 - aRand * .5, 0., 1.); m = m * m * (3. - 2. * m);
-        vec3 p = mix(position, aTo, m);
-        float live = 1. - uStill;
-        p += live * .04 * vec3(sin(uTime * .5 + aRand * 40. + p.y * 1.7), cos(uTime * .43 + aRand * 31.), sin(uTime * .37 + aRand * 23.));
-        // l'eau ondule sous l'horizon
-        float below = step(p.y, -1.64);
-        p.x += below * uWater * sin(uTime * 1.6 + p.y * 24. + aRand * 6.) * .035;
-        // le flux avance et traverse le contrôle
-        p.x = mix(p.x, mod(p.x + uTime * .45 + 2.5, 5.) - 2.5, uFlow * step(.02, abs(p.x)));
-        vGate = uFlow * smoothstep(-.1, .4, p.x) * step(.02, abs(p.x));
-        // braises qui montent
-        float ember = uEmber * step(.9, aRand);
-        p.y += ember * mod(uTime * .25 + aRand * 13., 2.6);
-        vBright = 1. + ember * 1.5 + below * -.45 * uWater;
-        vec4 mv = modelViewMatrix * vec4(p, 1.);
-        gl_Position = projectionMatrix * mv;
-        vR = aRand;
-        gl_PointSize = uSize * (.4 + aRand * .8) * uPR / -mv.z;
-      }`,
-    fragmentShader: `
-      uniform vec3 uA, uB; varying float vR; varying float vGate; varying float vBright;
-      void main(){
-        float r = length(gl_PointCoord - .5); if (r > .5) discard;
-        float a = pow(smoothstep(.5, 0., r), 1.8) * .8 * vBright;
-        vec3 col = mix(uA, uB, vR);
-        col = mix(col, vec3(.55, 1., .78), vGate * .8);
-        gl_FragColor = vec4(col * a, a);
-      }` });
-  const pts = new THREE.Points(geo, mat); sc.add(pts);
-  const cA = scene.map(n => new THREE.Color(PAL[n][0])), cB = scene.map(n => new THREE.Color(PAL[n][1]));
-
-  const resize = () => { renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(innerWidth, innerHeight, false); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); };
-  addEventListener("resize", resize); resize();
-  const par = { x: 0, y: 0 };
-  addEventListener("pointermove", e => { par.x = e.clientX / innerWidth * 2 - 1; par.y = e.clientY / innerHeight * 2 - 1; });
-
-  let smooth = scrollY, pair = [-1, -1], rot = 0; const clock = new THREE.Clock();
-  const side = k => innerWidth < 720 ? 0 : sections[k].classList.contains("center") ? 0 : sections[k].classList.contains("right") ? -1 : 1;
-  const flat = n => n === "harbor" || n === "sunrise" || n === "flow" || n === "sorting" || n === "frozen";
-  (function frame() {
-    const dt = Math.min(clock.getDelta(), .05);
-    smooth += (scrollY - smooth) * (reduce ? 1 : Math.min(1, dt * 4.5));
-    const { i, j, t, m } = stateAt(smooth);
-    if (pair[0] !== i || pair[1] !== j) {
-      geo.attributes.position.array.set(SH[scene[i]]); geo.attributes.position.needsUpdate = true;
-      geo.attributes.aTo.array.set(SH[scene[j]]); geo.attributes.aTo.needsUpdate = true;
-      pair = [i, j];
-    }
-    const here = m < .5 ? scene[i] : scene[j], k = m < .5 ? i : j;
-    U.uMix.value = m; U.uTime.value += dt * (reduce ? .2 : 1);
-    U.uA.value.copy(cA[i]).lerp(cA[j], m); U.uB.value.copy(cB[i]).lerp(cB[j], m);
-    const ease = x => Math.min(1, dt * x);
-    U.uStill.value += ((STILL[here] || 0) - U.uStill.value) * ease(4);
-    U.uFlow.value += ((scene[i] === "flow" ? 1 - m : 0) - U.uFlow.value) * ease(6);
-    U.uWater.value += ((here === "harbor" || here === "sunrise" ? 1 : 0) - U.uWater.value) * ease(3);
-    U.uEmber.value += ((here === "forest" ? 1 : 0) - U.uEmber.value) * ease(2);
-    paintSky(i, j, m, smooth);
-    // Caméra : la scène se tient du côté opposé au texte et respire doucement
-    const tx = (side(i) + (side(j) - side(i)) * m) * 1.8;
-    pts.position.x += (tx - pts.position.x) * ease(2.5);
-    pts.position.y += ((innerWidth < 720 ? 1.4 : 0) - pts.position.y) * ease(2.5);
-    rot += dt * (reduce ? 0 : .05) * (1 - U.uStill.value);
-    pts.rotation.y = flat(here) ? Math.sin(rot) * .12 + par.x * .08 : rot + t * .4;
-    pts.rotation.x += ((here === "forest" || here === "strata" || here === "crumble" ? .28 : 0) + par.y * .05 - pts.rotation.x) * ease(2);
-    cam.position.z = 7.4 - Math.sin(t * Math.PI) * .7;
-    cam.lookAt(pts.position.x * .25, 0, 0);
-    renderer.render(sc, cam);
-    requestAnimationFrame(frame);
-  })();
-} else {
-  addEventListener("scroll", () => { const { i, j, m } = stateAt(scrollY); paintSky(i, j, m, scrollY); }, { passive: true });
-}
-</script>
-</body>
-</html>
+<footer><span>Nirina Andriantsoa · Marseille</span><a href="https://github.com/andriantsoa777" target="_blank" rel="noopener noreferrer">GitHub</a><a href="cv.html">CV en texte accessible</a><span>Sans suivi publicitaire · 26 nov. 2026</span></footer>
+<script type="module" src="assets/scene.js"></script>
+</body></html>

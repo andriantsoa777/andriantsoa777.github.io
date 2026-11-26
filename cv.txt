@@ -4,53 +4,52 @@ Stage de fin d'études — Data Science · Data Engineering · IA
 +33 6 21 63 82 86 | andriants.nirina@gmail.com | Portfolio : andriantsoa777.github.io
 
 PROFIL
-De la donnée brute à l'outil que l'on utilise vraiment : je conçois des pipelines, des modèles et les applications qui vont avec,
-puis je les fais tourner — quatre de mes projets fonctionnent en continu sur un serveur Linux que j'administre. Je ne crois un
-chiffre qu'une fois vérifié, et je documente ce que je construis pour qu'un autre puisse le reprendre. Je cherche une équipe
-data où apprendre vite et être utile dès les premières semaines.
+
+Étudiant en Master 2 SID, je transforme les données brutes en applications utilisables : recherche sourcée sur 563 255
+décisions de justice, agents de candidature et recommandation musicale. Je développe les pipelines, les API et les
+interfaces, avec des contrôles et des tests. Je cherche un stage où contribuer à un produit data et progresser au contact
+d’une équipe.
 
 FORMATION
-Master 2 Informatique — Science des Données & Ingénierie (SID) — Aix-Marseille Université                       2025 – 2027
-Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, bases de données
-avancées et post-relationnelles, recherche opérationnelle
-Licence Informatique — Aix-Marseille Université                                                                       2022 – 2025
+
+Master Informatique — SID (Master 2 en cours) — Aix-Marseille Université                                    2025 – 2027
+Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, BDD avancées
+Licence Informatique — Aix-Marseille Université                                                                    2022 – 2025
 
 PROJETS ET RÉALISATIONS
-LexPipe — recherche dans la jurisprudence française                                                  Projet de Master · 2026
-Python · DuckDB · Parquet · PostgreSQL · pgvector · Docker
-  Ingéré 563 255 décisions de justice (1947-2026), couche par couche jusqu'à PostgreSQL, sans doublon, avec rapport de
-  qualité.
-  Construit une recherche hybride sur 596 456 passages : elle cite le passage exact, ou ne répond pas.
-JobCopilot — outil personnel de recherche de stage                                               Projet personnel · 2026 · en ligne
-Python · FastAPI · PostgreSQL · Redis · Celery · Playwright
-  Collecté 9 605 offres sur 17 sites, dédoublonnées et notées selon mon profil avec un score explicable.
-  Découvert qu'aucun dossier n'était réellement parti malgré un tableau de bord actif ; ajouté une preuve par envoi, un
-  contrôle toutes les 5 minutes et 580 tests.
-FireCast — prédire les départs de feux à partir de la météo                                        Projet de Master · 2026
-Python · scikit-learn · XGBoost · SHAP
-  Transformé 9,5 millions de lignes en 126 799 séquences ; découpage par événement pour que le futur ne fuite pas dans
-  l'entraînement ; 5 modèles comparés (PR-AUC, F2).
-BankLens — données bancaires, de la source au tableau de bord                                              Projet data · 2026
-SQL · DuckDB · Python
-  Modélisé des données bancaires réelles en étoile (16 tables), répondu à 28 questions métier en SQL, entraîné 4 modèles de
-  risque.
-GratiFaith — application mobile                                                                                   Fondateur · 2025
-React Native · Firebase
-  Conçue, développée et publiée seul sur l'App Store et Google Play.
-Autres projets : My Friends (amis virtuels, app iPhone) · Nirys (recommandation musicale) · GospelKeys (transcription de
-piano)
+
+JobCopilot — agent IA de recherche d'emploi                                                                  Personnel · 2026
+  Conception d’un pipeline de collecte, dédoublonnage et scoring expliqué d’offres ; génération des dossiers et suivi SMTP
+  / IMAP.
+  Agents navigateur et vision ; prototype d’appels automatiques via SIP, STT / TTS. Garde-fous : quotas, pause d’urgence et
+  traçabilité des envois.
+LexPipe — moteur de recherche dans la jurisprudence                                                     Projet de Master · 2026
+  Pipeline Judilibre, DuckDB / Parquet et PostgreSQL : 563 255 décisions ingérées, 596 456 passages vectorisés.
+  Recherche hybride et synthèse avec citations ; abstention si aucun passage trouvé.
+My Friends — amis virtuels qui appellent pour pratiquer l'anglais                                             Personnel · 2026
+  Développement d’amis IA pour pratiquer l’anglais : mémoire des échanges, personnalités et voix distinctes, messages
+  vocaux et appels iPhone via CallKit.
+Nirys — plateforme musicale et recommandation                                                            Personnel · 2026
+  Moteur de recommandation en 4 étapes : candidats, classement, diversité et exploration. Signaux d’écoute, embeddings
+  audio CLAP / pgvector et photo transformée en ambiance musicale.
+FireCast & BankLens — data science et BI                                                                Projets data · 2026
+  FireCast : 9,5 M de lignes, comparaison de 5 modèles avec découpage temporel anti-fuite (PR-AUC, F2). BankLens : 16
+  tables, 28 questions métier SQL et 4 modèles de risque sur données de recherche.
+Auto Video Factory : pipeline vidéo scientifique sourcé. GospelKeys : transcription de piano multi-modèles. GratiFaith :
+application mobile publiée sur iOS et Android.
 
 COMPÉTENCES
+
 Langages : Python, SQL, TypeScript, JavaScript, Java
-Data Science & Machine Learning : Pandas, scikit-learn, XGBoost, SHAP, NLP, séries temporelles, clustering, évaluation de
-modèles
-Data Engineering : PostgreSQL, DuckDB, Parquet, Redis, Celery, ETL, architecture médaillon, modèle en étoile
-IA générative : LLM, RAG, embeddings, pgvector, recherche hybride
-Outils : FastAPI, Docker, Linux, Git, GitHub Actions, Streamlit, Power BI, Next.js
+Data Science & Machine Learning : Pandas, scikit-learn, XGBoost, SHAP, NLP, clustering, évaluation de modèles
+IA générative : LLM, RAG, agents, STT / TTS, embeddings, pgvector, recherche hybride
+Data Engineering : PostgreSQL, DuckDB, Parquet, Redis, Celery, ETL, modélisation dimensionnelle
+Produit & DevOps : FastAPI, Next.js, React Native, Docker / Podman, Linux, Git, Playwright
 Langues : Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)
 
 EXPÉRIENCE PROFESSIONNELLE
-Équipier de nuit — McDonald's Vieux-Port, Marseille                                                             2023 – aujourd'hui
-En parallèle des études : rythme soutenu, travail en équipe, procédures strictes.
-Employé polyvalent — Super K, Marseille                                                                               2022 – 2023
+
+Équipier polyvalent — McDonald's Vieux-Port, Marseille                                                      2023 – aujourd'hui
+
+Employé polyvalent — Super K, Marseille                                                                            2022 – 2023
 
