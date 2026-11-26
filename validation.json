@@ -11,7 +11,7 @@
   "note": "Extraction locale vérifiée ; ne garantit ni classement ATS ni entretien.",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "CV_Nirina_Andriantsoa.pdf": "0d454241e609cd9007df53f5c74c074f411e1bd3f036804264d34159bc29e3ad",
+    "CV_Nirina_Andriantsoa.pdf": "815c29701b95ad4ac8633ea0f7d74a2c518d4c3ba877c519f4e9c259cbf529d9",
     "assets/fonts/OFL-SourceSans.txt": "f9e57d28452ab6162c7fc0d248b5a5e81bf64676a6950d56b2e137c1253f79e8",
     "assets/fonts/OFL-SourceSerif.txt": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
     "assets/fonts/source-sans-3-latin-400-normal.ttf": "a79607c58a37e2db32ad1df45acaec8462b112293b90ce282a2942292f887fef",
@@ -20,7 +20,7 @@
     "assets/fonts/source-serif-4-latin-700-normal.ttf": "be518d65f9119b441a1bdf9d2ca169e45c7ed33597774eb8b3fd201465831fc0",
     "assets/img/clouds.webp": "de18baf71517990cd34abf3b909d5af9443646e315aa327f9b02a6c32b6b78b2",
     "assets/scene.js": "fda9420e9965a96d656331ed61a7fdc34ef5443fe008bf62fc9ce41fb412f75d",
-    "assets/site.css": "3bc71af18fc03868373f9ed15e051dca23583e0c916b289514e7fc3ba73806c9",
+    "assets/site.css": "526619e4d37b1f4655086adfc4dc78e26f9ac8da9742069e66045b4896bfca64",
     "assets/vendor/LICENSE.txt": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
     "assets/vendor/three.module.min.js": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6",
     "cv-preview.png": "14bba27303d82089cf49c04da33ee2ed736abf95016e2cc40eb70aee39db6556",
