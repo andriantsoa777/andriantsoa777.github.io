@@ -4,18 +4,20 @@ Stage Data Science & IA — Python · SQL · Machine Learning · RAG
 +33 6 21 63 82 86 | andriants.nirina@gmail.com | Portfolio : andriantsoa777.github.io
 PROFIL
 Étudiant en Master 2 SID, je construis des solutions data de bout en bout : prédiction du churn, recherche documentaire
-RAG, recommandation et agents d’automatisation. De la préparation des données à l’API, je relie modélisation, évaluation
-et usage métier. Mes projets associent volumes réels, explicabilité et contrôles contre les fuites de données.
+RAG, pipelines multimodaux et agents d’automatisation. De la préparation des données à l’API, je relie modélisation,
+évaluation et usage métier. Mes projets associent volumes réels, explicabilité et contrôles contre les fuites de données.
 FORMATION
 Master Informatique — SID (Master 2 en cours) — Aix-Marseille Université                                     2025 – 2027
 Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, BDD avancées
-Licence Informatique — Aix-Marseille Université                                                                    2022 – 2025
+Licence Informatique — Aix-Marseille Université                                                                      2022 – 2025
 
 PROJETS ET RÉALISATIONS
-JobCopilot — agents IA & automatisation de workflows                                                          Personnel · 2026
-  Automatisation de la collecte, du dédoublonnage et du scoring d’offres ; dossiers de candidature et suivi email. Python,
-  FastAPI, Celery, Playwright ; validation humaine, quotas et traçabilité.
-  Agents navigateur et vision ; prototype vocal SIP / STT / TTS, en cours de validation.
+JobCopilot — agents IA & automatisation de workflows                                                            Personnel · 2026
+  Automatisation de la collecte, du scoring d’offres, des dossiers et du suivi email. Python, FastAPI, Celery, Playwright ;
+  validation humaine et traçabilité. Agents navigateur / vision ; prototype vocal SIP / STT / TTS, en test.
+Auto Video Factory — agents multimodaux & génération vidéo                                                 Personnel · 2026
+  Orchestration Python / LLM : recherche PubMed / Crossref, script, voix TTS et montage FFmpeg ; critique automatique et
+  réparation des scènes, avec revue humaine avant publication.
 LexPipe — RAG juridique & Data Engineering                                                           Projet de Master · 2026
   Architecture RAG (Retrieval-Augmented Generation) : ETL Judilibre, DuckDB / Parquet, PostgreSQL / pgvector. 563 255
   décisions ingérées ; 596 456 passages vectorisés sur 245 000 décisions.
@@ -26,15 +28,12 @@ Customer Churn Prediction — prédiction de l’attrition client               
 My Friends — agents conversationnels vocaux                                                                 Personnel · 2026
  Amis IA pour pratiquer l’anglais : mémoire conversationnelle, LLM, STT / TTS et personnalités distinctes ; appels iPhone
  via Swift / CallKit.
-Nirys — système de recommandation multimodal                                                              Personnel · 2026
-  Recommandation en 4 étapes : candidats, ranking, diversité, exploration. Signaux d’écoute, embeddings audio CLAP /
-  pgvector ; image convertie en ambiance musicale.
 FireCast & BankLens — prédiction, SQL & aide à la décision                                               Projets data · 2026
   FireCast — prédiction des départs de feu : 9,5 M de lignes, 5 modèles comparés, validation temporelle anti-fuite, PR-AUC
   / F2 et SHAP ; résultats expérimentaux.
   BankLens — analyse bancaire : ETL bronze / silver / gold, modèle en étoile de 16 tables, 28 questions métier SQL, 4
   modèles de risque sur données de recherche anonymisées.
-Autres réalisations : EcomVision (KPI, segmentation RFM) ; Auto Video Factory (pipeline multimodal sourcé) ; GospelKeys
+Autres réalisations : Nirys (recommandation multimodale, CLAP / pgvector) ; EcomVision (KPI, RFM) ; GospelKeys
 (transcription audio ML) ; GratiFaith (application publiée iOS / Android).
 COMPÉTENCES
 Data Science & analyse : Python, SQL, Pandas, scikit-learn, XGBoost, EDA, classification, SHAP, PR-AUC / F2, segmentation
@@ -45,6 +44,6 @@ Développement & déploiement : FastAPI, Redis / Celery, TypeScript, React / Nex
 unitaires et intégration
 Langues : Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)
 EXPÉRIENCE PROFESSIONNELLE
-Équipier polyvalent — McDonald's Vieux-Port, Marseille                                                       2023 – aujourd'hui
-Employé polyvalent — Super K, Marseille                                                                            2022 – 2023
+Équipier polyvalent — McDonald's Vieux-Port, Marseille                                                        2023 – aujourd'hui
+Employé polyvalent — Super K, Marseille                                                                              2022 – 2023
 

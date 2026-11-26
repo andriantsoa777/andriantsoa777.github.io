@@ -1,11 +1,11 @@
 // Cinéma photographique : images mises en scène, profondeur par parallaxe,
 // brume volumétrique calculée et lumière 3D continue. Ce n’est pas une scène
 // photogrammétrique ni une capture des applications présentées.
-export const SHOTS=['depart','jobcopilot','lexpipe','friends','nirys','factory','firecast','contact'];
+export const SHOTS=['depart','jobcopilot','contact'];
 export function shotAt(phase){
-  const frame=Math.max(0,Math.min(7,Math.floor(phase)));
+  const frame=Math.max(0,Math.min(SHOTS.length-1,Math.floor(phase)));
   const t=Math.max(0,Math.min(1,(phase-frame-.60)/.40));
-  return {frame,next:Math.min(frame+1,7),blend:t*t*(3-2*t)};
+  return {frame,next:Math.min(frame+1,SHOTS.length-1),blend:t*t*(3-2*t)};
 }
 export function createJourney(THREE,renderer,onReady=()=>{}){
   const scene=new THREE.Scene();
@@ -84,15 +84,15 @@ export function createJourney(THREE,renderer,onReady=()=>{}){
   const pointerMove=e=>pointer.set(e.clientX/innerWidth-.5,.5-e.clientY/innerHeight);
   if(typeof addEventListener==='function')addEventListener('pointermove',pointerMove,{passive:true});
   function point(t,phase,time,mobile){
-    const music=Math.exp(-Math.pow(phase-4,2)*2),voice=Math.exp(-Math.pow(phase-3,2)*2);
-    const wave=Math.sin(t*14.+time*.7)*music*.13;
+    const arrival=Math.max(0,Math.min(1,phase-1));
+    const wave=Math.sin(t*9.+time*.45)*.04*(1-arrival);
     return [mobile?.8:1.4+Math.sin(t*5.+phase*.7)*.75,
-      -.45+Math.sin(t*5.7+phase*.5)*(.3+voice*.25)+wave,
+      -.45+Math.sin(t*5.7+phase*.5)*(.3+arrival*.14)+wave,
       Math.cos(t*5.+phase*.3)*.65];
   }
   function update(phase,time,mobile,still=false){
     const state=shotAt(phase);load(state.frame);load(state.next);
-    if(state.next<7)load(state.next+1);
+    if(state.next<SHOTS.length-1)load(state.next+1);
     const a=loaded[state.frame]?state.frame:loaded[0]?0:null;
     const b=loaded[state.next]?state.next:a;
     if(a!==null){uniforms.photoA.value=textures[a];uniforms.photoB.value=textures[b];uniforms.ready.value=1;}
@@ -106,7 +106,7 @@ export function createJourney(THREE,renderer,onReady=()=>{}){
     thread.material.opacity=mobile?.10:.17;
     dust.rotation.z=time*.004;dust.position.y=Math.sin(time*.09)*.08;
     dust.material.opacity=state.frame===2?.20:.10;
-    return {phase,...state,day:Math.max(0,Math.min(1,phase-6))};
+    return {phase,...state,day:Math.max(0,Math.min(1,phase-1))};
   }
   return {scene,camera,update};
 }

@@ -40,8 +40,8 @@ export function createComputer(THREE,onReady=()=>{}){
     ctx.fillStyle='#263c4b';ctx.fillRect(0,0,2048,64);ctx.fillStyle='#e7d7bc';ctx.font='24px sans-serif';ctx.fillText('Nirina  /  Mon bureau',46,42);
     ctx.fillStyle='#fff';ctx.fillRect(90,110,650,920);if(image)ctx.drawImage(image,90,110,650,920);
     ctx.fillStyle='#f2ddbf';ctx.font='54px Georgia';ctx.fillText('Le papier ne dit pas tout.',850,230);
-    const names=['JobCopilot','LexPipe','Customer Churn Prediction','My Friends','Nirys & GospelKeys','Auto Video Factory','FireCast & BankLens'];
-    ctx.font='32px sans-serif';names.forEach((name,i)=>{ctx.fillStyle='#b88e5c';ctx.fillRect(850,300+i*86,36,28);ctx.fillStyle='#e7e5df';ctx.fillText(name,915,328+i*86);});
+    const names=['JobCopilot','Auto Video Factory','LexPipe','Customer Churn Prediction','My Friends','Nirys','GospelKeys','FireCast','BankLens'];
+    ctx.font='32px sans-serif';names.forEach((name,i)=>{ctx.fillStyle='#b88e5c';ctx.fillRect(850,300+i*70,36,28);ctx.fillStyle='#e7e5df';ctx.fillText(name,915,328+i*70);});
     ctx.font='23px sans-serif';ctx.fillStyle='#bdcad2';ctx.fillText('Des questions. Des données. Des projets.',850,1020);displayTexture.needsUpdate=true;
   }
   drawDisplay();const display=new THREE.Mesh(new THREE.PlaneGeometry(4.43,2.49),new THREE.MeshBasicMaterial({map:displayTexture,toneMapped:false}));display.position.set(0,.025,.147);display.name='cv-screen';computer.add(display);

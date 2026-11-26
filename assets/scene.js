@@ -12,29 +12,9 @@ let requestFrame=()=>{};
 let anchors=chapters.map(c=>c.offsetTop);
 let active=-1;
 
-// Les preuves restent de vrais éléments HTML si WebGL ou JavaScript sont indisponibles.
-const dossier=document.getElementById('dossier');
-if(typeof HTMLDialogElement!=='undefined' && dossier){
-  const dialog=document.createElement('dialog');dialog.setAttribute('aria-label','Projets, preuves et limites');
-  const bar=document.createElement('div');bar.className='dialog-top';
-  const label=document.createElement('span');label.textContent='Le travail derrière la traversée';
-  const close=document.createElement('button');close.type='button';close.className='dialog-close';close.textContent='Fermer';
-  bar.append(label,close);const area=document.createElement('div');area.className='dossier-scroll';area.append(dossier.querySelector('.dossier-content').cloneNode(true));
-  dialog.append(bar,area);document.body.append(dialog);document.body.classList.add('ui-ready');
-  close.addEventListener('click',()=>dialog.close());
-  function openFromHash(){if(['#dossier','#projects'].includes(location.hash)&&!dialog.open)dialog.showModal();}
-  openFromHash();addEventListener('hashchange',openFromHash);
-  document.querySelectorAll('[data-open-dossier]').forEach(link=>link.addEventListener('click',event=>{
-    event.preventDefault();dialog.showModal();close.focus();
-    const fact=link.dataset.project && area.querySelector(`[data-fact="${link.dataset.project}"]`);
-    area.scrollTop=fact?fact.offsetTop-area.offsetTop:0;
-  }));
-  dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
-}
-
 function hud(phase){
   const index=Math.min(chapters.length-1,Math.max(0,Math.floor(phase+.12)));
-  progress.style.setProperty('--progress',Math.min(phase/7.75,1));
+  progress.style.setProperty('--progress',Math.min(phase/(chapters.length-.25),1));
   if(index===active)return;
   active=index;
   railLinks.forEach((a,i)=>i===index?a.setAttribute('aria-current','step'):a.removeAttribute('aria-current'));

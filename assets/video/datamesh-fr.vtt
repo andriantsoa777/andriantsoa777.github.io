@@ -1,0 +1,69 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:07.355
+Dans cet exemple fictif, les Ventes enregistrent les achats. La Livraison enregistre les colis.
+
+2
+00:00:07.833 --> 00:00:13.252
+L'analyste veut repérer les commandes en retard. Il demande les données à une seule équipe centrale.
+
+3
+00:00:13.733 --> 00:00:19.894
+Cette équipe doit aussi expliquer tous les chiffres. Quand les demandes s'accumulent, elle devient un point d'attente.
+
+4
+00:00:21.000 --> 00:00:28.720
+Data veut dire données. Mesh évoque les mailles d'un filet. Ici, imagine un maillage entre équipes, pas un nouveau réseau de câbles.
+
+5
+00:00:29.200 --> 00:00:35.897
+Un data mesh organise les responsabilités et le partage des données analytiques. Ce n'est pas un logiciel à installer.
+
+6
+00:00:37.000 --> 00:00:42.605
+On confie les données de vente à l'équipe Ventes. Elle connaît le sens des achats et prend en charge leur qualité.
+
+7
+00:00:43.067 --> 00:00:50.495
+L'équipe Livraison prend en charge les colis. Pourquoi répartir ainsi ? Chaque équipe connaît les règles et les changements de son activité.
+
+8
+00:00:50.967 --> 00:00:58.149
+Chaque équipe publie un produit de données : des données documentées et utilisables par d'autres, avec un responsable identifié.
+
+9
+00:00:58.600 --> 00:01:05.018
+L'analyste utilise ces produits pour relier commandes et livraisons, sans reconstruire seul le sens de chaque fichier.
+
+10
+00:01:06.133 --> 00:01:11.100
+Voici nos données fictives. Les deux produits utilisent le même identifiant de commande.
+
+11
+00:01:11.567 --> 00:01:16.882
+On relie la commande cent un à sa livraison : elle est en retard. La commande cent deux est à l'heure.
+
+12
+00:01:17.333 --> 00:01:23.820
+Le maillage ne fait pas cette jointure par magie. Il rend les données plus faciles à trouver, comprendre et réutiliser.
+
+13
+00:01:24.933 --> 00:01:30.422
+Mais si chaque équipe invente ses propres identifiants et définitions, les produits ne s'assemblent pas.
+
+14
+00:01:30.900 --> 00:01:40.847
+Les équipes définissent donc des règles communes : identifiants, accès et qualité. C'est la gouvernance fédérée : des responsabilités locales, des règles partagées.
+
+15
+00:01:41.300 --> 00:01:48.519
+Une plateforme commune fournit les outils en libre-service. Les équipes n'ont pas à recréer chacune toute l'infrastructure.
+
+16
+00:01:49.633 --> 00:01:57.177
+Avoir plusieurs bases ne suffit pas : il faut des responsables, des produits utilisables, une plateforme et des règles communes.
+
+17
+00:01:57.633 --> 00:02:05.724
+Dans une petite équipe, cette organisation peut coûter plus qu'elle n'apporte. On choisit selon le problème, pas selon le mot à la mode.
