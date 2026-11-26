@@ -17,15 +17,15 @@
   @page { size: A4; margin: 0; }
   :root { --ink:#16202e; --soft:#4b5563; --mute:#6b7280; --blue:#1d4f91; --line:#d9e2ee; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Source, Arial, sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.38; background: #fff;
+  body { font-family: Source, Arial, sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.26; background: #fff;
          font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "calt" 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .page { width: 210mm; min-height: 296mm; padding: 12mm 15mm 9mm; }
+  .page { width: 210mm; min-height: 296mm; padding: 11mm 14mm 9mm; }
   h1 { font-size: 22pt; font-weight: 700; line-height: 1.05; letter-spacing: -0.2pt; }
   .title { margin-top: 1.6mm; font-size: 11pt; font-weight: 600; color: var(--blue); }
   .meta { margin-top: 1.2mm; color: var(--soft); }
   .meta span + span::before { content: "  |  "; color: #b8c4d4; white-space: pre; }
   .meta span { white-space: nowrap; }
-  h2 { margin: 3mm 0 1.3mm; padding-bottom: 0.9mm; font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase; border-bottom: 0.35mm solid var(--line); }
+  h2 { margin: 2.3mm 0 1.1mm; padding-bottom: 0.9mm; font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase; border-bottom: 0.35mm solid var(--line); }
   .summary { color: #243042; }
   b { font-weight: 700; color: var(--ink); }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 5mm; }
@@ -33,7 +33,7 @@
   .row h3 span { font-weight: 400; color: var(--soft); }
   .when { color: var(--mute); white-space: nowrap; font-size: 9pt; }
   .detail { color: var(--soft); margin-top: 0.4mm; }
-  .block { margin-bottom: 1.7mm; break-inside: avoid; }
+  .block { margin-bottom: 1.4mm; break-inside: avoid; }
   .stack { color: var(--blue); font-size: 8.2pt; margin-top: 0.3mm; }
   ul { list-style: none; margin-top: 0.6mm; }
   li { position: relative; padding-left: 3.4mm; margin-top: 0.5mm; }
@@ -56,12 +56,12 @@
 <body>
 <div class="page">
   <h1>Nirina Andriantsoa</h1>
-  <p class="title">Stage de fin d&#39;études — Data Science · Data Engineering · IA</p>
+  <p class="title">Stage Data Science &amp; IA — Python · SQL · Machine Learning · RAG</p>
   <p class="meta"><span>6 mois, dès fin février 2027 · Marseille, mobile partout en France</span></p>
   <p class="meta"><span>+33 6 21 63 82 86</span><span>andriants.nirina@gmail.com</span><span>Portfolio : <a href="https://andriantsoa777.github.io" style="color:inherit">andriantsoa777.github.io</a></span></p>
 
   <h2>Profil</h2>
-  <p class="summary">Étudiant en Master 2 SID, je transforme les données brutes en applications utilisables : recherche sourcée sur <b>563 255 décisions de justice</b>, agents de candidature et recommandation musicale. Je développe les pipelines, les API et les interfaces, avec des contrôles et des tests. Je cherche un stage où contribuer à un produit data et progresser au contact d’une équipe.</p>
+  <p class="summary">Étudiant en <b>Master 2 SID</b>, je construis des solutions data de bout en bout : <b>prédiction du churn</b>, recherche documentaire <b>RAG</b>, recommandation et <b>agents d’automatisation</b>. De la préparation des données à l’API, je relie modélisation, évaluation et usage métier. Mes projets associent volumes réels, explicabilité et contrôles contre les fuites de données.</p>
 
   <h2>Formation</h2>
   
@@ -79,34 +79,39 @@
   <h2>Projets et réalisations</h2>
   
   <div class="block">
-    <div class="row"><h3>JobCopilot <span>— agent IA de recherche d&#39;emploi</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Conception d’un pipeline de collecte, dédoublonnage et scoring expliqué d’offres ; génération des dossiers et suivi SMTP / IMAP.</li><li>Agents navigateur et vision ; prototype d’appels automatiques via SIP, STT / TTS. Garde-fous : quotas, pause d’urgence et traçabilité des envois.</li></ul>
+    <div class="row"><h3>JobCopilot <span>— agents IA &amp; automatisation de workflows</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Automatisation de la collecte, du dédoublonnage et du scoring d’offres ; dossiers de candidature et suivi email. <b>Python, FastAPI, Celery, Playwright</b> ; validation humaine, quotas et traçabilité.</li><li>Agents navigateur et vision ; <b>prototype vocal SIP / STT / TTS</b>, en cours de validation.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>LexPipe <span>— moteur de recherche dans la jurisprudence</span></h3><span class="when">Projet de Master · 2026</span></div>
-    <ul><li>Pipeline Judilibre, DuckDB / Parquet et PostgreSQL : <b>563 255 décisions</b> ingérées, <b>596 456 passages</b> vectorisés. Recherche hybride et synthèse avec citations ; abstention si aucun passage trouvé.</li></ul>
+    <div class="row"><h3>LexPipe <span>— RAG juridique &amp; Data Engineering</span></h3><span class="when">Projet de Master · 2026</span></div>
+    <ul><li>Architecture <b>RAG (Retrieval-Augmented Generation)</b> : ETL Judilibre, DuckDB / Parquet, PostgreSQL / pgvector. <b>563 255 décisions</b> ingérées ; <b>596 456 passages</b> vectorisés sur 245 000 décisions.</li><li>Recherche hybride lexicale / sémantique, embeddings MPNet ; synthèse sourcée, citations et abstention sans preuve.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>My Friends <span>— amis virtuels qui appellent pour pratiquer l&#39;anglais</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Développement d’amis IA pour pratiquer l’anglais : mémoire des échanges, personnalités et voix distinctes, messages vocaux et appels iPhone via <b>CallKit</b>.</li></ul>
+    <div class="row"><h3>Customer Churn Prediction <span>— prédiction de l’attrition client</span></h3><span class="when">Projet ML</span></div>
+    <ul><li>Pipeline de classification sur <b>7 043 clients Telco</b> : nettoyage, <b>analyse exploratoire (EDA)</b>, comparaison de modèles et réglage du seuil ; <b>SHAP</b>, scoring batch, dashboard Streamlit et <b>API FastAPI</b>.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>Nirys <span>— plateforme musicale et recommandation</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Moteur de recommandation en <b>4 étapes</b> : candidats, classement, diversité et exploration. Signaux d’écoute, embeddings audio <b>CLAP / pgvector</b> et photo transformée en ambiance musicale.</li></ul>
+    <div class="row"><h3>My Friends <span>— agents conversationnels vocaux</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Amis IA pour pratiquer l’anglais : <b>mémoire conversationnelle, LLM, STT / TTS</b> et personnalités distinctes ; appels iPhone via <b>Swift / CallKit</b>.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>FireCast &amp; BankLens <span>— data science et BI</span></h3><span class="when">Projets data · 2026</span></div>
-    <ul><li>FireCast : <b>9,5 M de lignes</b>, comparaison de 5 modèles avec découpage temporel anti-fuite (PR-AUC, F2). BankLens : <b>16 tables</b>, 28 questions métier SQL et 4 modèles de risque sur données de recherche.</li></ul>
+    <div class="row"><h3>Nirys <span>— système de recommandation multimodal</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Recommandation en <b>4 étapes</b> : candidats, ranking, diversité, exploration. Signaux d’écoute, embeddings audio <b>CLAP / pgvector</b> ; image convertie en ambiance musicale.</li></ul>
   </div>
   
-  <p class="more">Auto Video Factory : pipeline vidéo scientifique sourcé. GospelKeys : transcription de piano multi-modèles. GratiFaith : application mobile publiée sur iOS et Android.</p>
+  <div class="block">
+    <div class="row"><h3>FireCast &amp; BankLens <span>— prédiction, SQL &amp; aide à la décision</span></h3><span class="when">Projets data · 2026</span></div>
+    <ul><li><b>FireCast — prédiction des départs de feu</b> : 9,5 M de lignes, 5 modèles comparés, validation temporelle anti-fuite, <b>PR-AUC / F2 et SHAP</b> ; résultats expérimentaux.</li><li><b>BankLens — analyse bancaire</b> : ETL bronze / silver / gold, modèle en étoile de <b>16 tables</b>, <b>28 questions métier SQL</b>, 4 modèles de risque sur données de recherche anonymisées.</li></ul>
+  </div>
+  
+  <p class="more">Autres réalisations : EcomVision (KPI, segmentation RFM) ; Auto Video Factory (pipeline multimodal sourcé) ; GospelKeys (transcription audio ML) ; GratiFaith (application publiée iOS / Android).</p>
 
   <h2>Compétences</h2>
-  <div class="skills"><p><b>Langages :</b> Python, SQL, TypeScript, JavaScript, Java</p><p><b>Data Science &amp; Machine Learning :</b> Pandas, scikit-learn, XGBoost, SHAP, NLP, clustering, évaluation de modèles</p><p><b>IA générative :</b> LLM, RAG, agents, STT / TTS, embeddings, pgvector, recherche hybride</p><p><b>Data Engineering :</b> PostgreSQL, DuckDB, Parquet, Redis, Celery, ETL, modélisation dimensionnelle</p><p><b>Produit &amp; DevOps :</b> FastAPI, Next.js, React Native, Docker / Podman, Linux, Git, Playwright</p><p><b>Langues :</b> Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)</p></div>
+  <div class="skills"><p><b>Data Science &amp; analyse :</b> Python, SQL, Pandas, scikit-learn, XGBoost, EDA, classification, SHAP, PR-AUC / F2, segmentation RFM / K-Means</p><p><b>IA générative &amp; agents :</b> LLM, RAG, NLP, embeddings, recherche hybride, pgvector, Playwright, STT / TTS</p><p><b>Data Engineering &amp; BI :</b> ETL, DuckDB, Parquet, PostgreSQL, modèle en étoile, qualité des données, KPI, Streamlit / Plotly</p><p><b>Développement &amp; déploiement :</b> FastAPI, Redis / Celery, TypeScript, React / Next.js, Docker / Podman, Linux, Git, tests unitaires et intégration</p><p><b>Langues :</b> Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)</p></div>
 
   <h2>Expérience professionnelle</h2>
   

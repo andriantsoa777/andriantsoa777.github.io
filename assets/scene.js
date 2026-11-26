@@ -64,7 +64,7 @@ try{
     journey.camera.aspect=innerWidth/innerHeight;journey.camera.updateProjectionMatrix();measure();requestFrame();
   }
   function draw(now){
-    frameId=0;if(document.hidden)return;
+    frameId=0;if(document.hidden||(document.body.classList.contains('portal-on')||document.body.classList.contains('experience-open')||document.body.classList.contains('desktop-on')))return;
     const dt=Math.min(last?(now-last)/1000:1/60,.1);last=now;
     const target=phaseAt(scrollY,anchors);
     phase=paused?target:approach(phase,target,dt);
@@ -78,6 +78,7 @@ try{
   motion.hidden=false;motion.addEventListener('click',()=>{paused=!paused;button();});
   preference.addEventListener('change',e=>{paused=e.matches;button();});
   addEventListener('resize',resize);
+  document.addEventListener('portalvisibility',()=>requestFrame());
   document.addEventListener('visibilitychange',()=>{last=0;if(document.hidden){cancelAnimationFrame(frameId);frameId=0;}else requestFrame();});
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();cancelAnimationFrame(frameId);frameId=0;canvas.hidden=true;motion.hidden=true;document.body.classList.remove('scene-ready');document.body.classList.add('no-webgl');});
   resize();button();document.body.classList.add('scene-ready');
