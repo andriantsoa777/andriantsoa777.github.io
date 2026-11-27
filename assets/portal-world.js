@@ -1,4 +1,4 @@
-import {entryPose} from './portal-math.js';
+const {entryPose}=await import('./portal-math.js'+new URL(import.meta.url).search);
 // Un ordinateur réellement modélisé. Le décor architectural est une image générée.
 export function createComputer(THREE,onReady=()=>{}){
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,.06,80);
@@ -34,7 +34,8 @@ export function createComputer(THREE,onReady=()=>{}){
   const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=1152;
   const ctx=canvas.getContext('2d');
   const displayTexture=new THREE.CanvasTexture(canvas);displayTexture.colorSpace=THREE.SRGBColorSpace;
-  const cv=new Image();cv.onload=()=>{drawDisplay(cv);onReady();};cv.src='cv-preview.png'+version;
+  let displayMode='cv',cachedCv=null,missionStep=-1;
+  const cv=new Image();cv.onload=()=>{cachedCv=cv;if(displayMode==='cv')drawDisplay(cv);else missionStep=-1;onReady();};cv.src='cv-preview.png'+version;
   function drawDisplay(image){
     ctx.fillStyle='#132331';ctx.fillRect(0,0,2048,1152);
     ctx.fillStyle='#263c4b';ctx.fillRect(0,0,2048,64);ctx.fillStyle='#e7d7bc';ctx.font='24px sans-serif';ctx.fillText('Nirina  /  Mon bureau',46,42);
@@ -44,6 +45,19 @@ export function createComputer(THREE,onReady=()=>{}){
     ctx.font='32px sans-serif';names.forEach((name,i)=>{ctx.fillStyle='#b88e5c';ctx.fillRect(850,300+i*70,36,28);ctx.fillStyle='#e7e5df';ctx.fillText(name,915,328+i*70);});
     ctx.font='23px sans-serif';ctx.fillStyle='#bdcad2';ctx.fillText('Des questions. Des données. Des projets.',850,1020);displayTexture.needsUpdate=true;
   }
+  function drawMission(step){
+    ctx.fillStyle='#102432';ctx.fillRect(0,0,2048,1152);
+    ctx.fillStyle='#273e4c';ctx.fillRect(0,0,2048,64);ctx.fillStyle='#dec9aa';ctx.font='24px sans-serif';ctx.fillText('Nirina  /  De la candidature au système',46,42);
+    ctx.fillStyle='#f4dec0';ctx.font='72px Georgia';ctx.fillText('Le CV devient un plan d’action.',100,205);
+    ctx.fillStyle='#b9cbd4';ctx.font='28px sans-serif';ctx.fillText('Une architecture. Quatre responsabilités.',105,267);
+    ctx.fillStyle='#eee5d6';ctx.fillRect(110,360,370,525);if(cachedCv)ctx.drawImage(cachedCv,110,360,370,525);
+    ctx.fillStyle='#a9bdc8';ctx.font='26px sans-serif';ctx.fillText('Les faits du profil',110,935);
+    ctx.strokeStyle='#ae8e5b';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(480,620);ctx.lineTo(650,620);ctx.lineTo(650,422);ctx.lineTo(650,920);ctx.stroke();
+    const flow=[['Collecter et structurer','Sources, normalisation, doublons'],['Évaluer la pertinence','Profil, critères, score expliqué'],['Préparer le dossier','Documents et interaction navigateur'],['Valider et suivre','Contrôle humain, traces, SMTP / IMAP']];
+    flow.forEach(([label,detail],i)=>{const y=410+i*155;ctx.fillStyle=i===step?'#f2cc95':'#829eae';ctx.beginPath();ctx.arc(650,y+15,i===step?12:7,0,Math.PI*2);ctx.fill();ctx.font='42px Georgia';ctx.fillText(label,710,y+20);ctx.fillStyle='#b2c6d1';ctx.font='25px sans-serif';ctx.fillText(detail,712,y+65);});
+    ctx.fillStyle='#cbb493';ctx.font='25px sans-serif';ctx.fillText('Concevoir le workflow, pas seulement générer du texte.',105,1050);displayTexture.needsUpdate=true;
+  }
+  function setMode(mode){if(displayMode===mode)return;displayMode=mode;missionStep=-1;if(mode==='cv')drawDisplay(cachedCv);}
   drawDisplay();const display=new THREE.Mesh(new THREE.PlaneGeometry(4.43,2.49),new THREE.MeshBasicMaterial({map:displayTexture,toneMapped:false}));display.position.set(0,.025,.147);display.name='cv-screen';computer.add(display);
   const cameraDot=new THREE.Mesh(new THREE.SphereGeometry(.016,12,8),new THREE.MeshBasicMaterial({color:'#637d91'}));cameraDot.position.set(0,1.34,.15);computer.add(cameraDot);
   const keyboard=box(2.0,.055,.65,-.15,-2.00,1.12);keyboard.rotation.x=.06;
@@ -53,6 +67,7 @@ export function createComputer(THREE,onReady=()=>{}){
   // Un fin anneau de lumière sur la tranche, pas une géométrie flottante arbitraire.
   const led=new THREE.Mesh(new THREE.BoxGeometry(.52,.012,.012),new THREE.MeshBasicMaterial({color:'#edc99a'}));led.position.set(0,-1.37,.15);computer.add(led);
   function update(progress,time,mobile=false){
+    setMode('cv');computer.rotation.set(0,0,0);
     const pose=entryPose(progress,mobile);computer.position.set(mobile?0:1.5,mobile?-.42:.65,0);
     const targetY=pose.y+(mobile?.3:0)*(1-pose.travel);
     camera.position.set(pose.x,targetY+.14*(1-pose.travel),pose.z);camera.lookAt(pose.x,targetY,0);
@@ -61,5 +76,15 @@ export function createComputer(THREE,onReady=()=>{}){
     dust.rotation.y=time*.005;warm.intensity=55+Math.sin(time*.3)*3;
     return pose;
   }
-  return {scene,camera,update};
+  function updateMission(progress,time,mobile=false){
+    const p=Math.max(0,Math.min(1,progress));setMode('mission');
+    const step=Math.min(3,Math.max(0,Math.floor((p-.35)/.6*4)));if(step!==missionStep){missionStep=step;drawMission(step);}
+    computer.position.set(mobile?0:1.5,mobile?-.42:.65,0);computer.rotation.set(0,-.045-p*.065,0);
+    const x=mobile?0:p*.35,y=mobile?-1.92:.9,z=mobile?15:9-p*.7;
+    camera.position.set(x,y+.12,z);camera.lookAt(x,y,0);
+    uniforms.aspect.value=camera.aspect;uniforms.zoom.value=1.015+p*.05;
+    dust.rotation.y=time*.005;warm.intensity=55+Math.sin(time*.3)*3;
+    return {progress:p,step};
+  }
+  return {scene,camera,update,updateMission};
 }

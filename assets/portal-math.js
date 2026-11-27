@@ -6,3 +6,5 @@ export function entryPose(progress,mobile=false){
     x:(mobile?-1.3:.2)*travel,y:mobile?-.42:.15+.5*travel,
     opacity:1-smooth((p-.91)/.09),copyOpacity:1-smooth(mobile?(p-.28)/.28:(p-.04)/.23)};
 }
+
+export function missionProgress(scroll,top,height,viewport){return clamp01((scroll-top)/Math.max(1,height-viewport));}

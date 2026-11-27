@@ -44,7 +44,8 @@ try{
     journey.camera.aspect=innerWidth/innerHeight;journey.camera.updateProjectionMatrix();measure();requestFrame();
   }
   function draw(now){
-    frameId=0;if(document.hidden||(document.body.classList.contains('portal-on')||document.body.classList.contains('experience-open')||document.body.classList.contains('desktop-on')))return;
+    frameId=0;if(document.hidden||(document.body.classList.contains('portal-on')||document.body.classList.contains('experience-open')||document.body.classList.contains('desktop-on')||document.body.classList.contains('mission-cover'))){last=0;return;}
+    if(!last)phase=phaseAt(scrollY,anchors);
     const dt=Math.min(last?(now-last)/1000:1/60,.1);last=now;
     const target=phaseAt(scrollY,anchors);
     phase=paused?target:approach(phase,target,dt);
@@ -54,8 +55,9 @@ try{
     if(!paused)frameId=requestAnimationFrame(draw);
   }
   requestFrame=()=>{if(!frameId&&!document.hidden)frameId=requestAnimationFrame(draw);};
-  function button(){motion.textContent=paused?'Animer la traversée':'Pause de l’animation';motion.setAttribute('aria-pressed',String(paused));requestFrame();}
-  motion.hidden=false;motion.addEventListener('click',()=>{paused=!paused;button();});
+  function button(){motion.textContent=paused?'Animer la traversée':'Pause de l’animation';motion.setAttribute('aria-pressed',String(paused));document.body.classList.toggle('motion-paused',paused);requestFrame();}
+  motion.hidden=false;motion.addEventListener('click',()=>{paused=!paused;button();document.dispatchEvent(new CustomEvent('motionchange',{detail:{paused}}));});
+  document.addEventListener('motionchange',e=>{paused=e.detail.paused;button();});
   preference.addEventListener('change',e=>{paused=e.matches;button();});
   addEventListener('resize',resize);
   document.addEventListener('portalvisibility',()=>requestFrame());
