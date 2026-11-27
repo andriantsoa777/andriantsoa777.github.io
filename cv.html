@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CV — Nirina Andriantsoa — Stage Data Science / Data Engineering / IA</title>
+<title>CV - Nirina Andriantsoa - Stage Data Science / Data Engineering / IA</title>
 <meta name="author" content="Nirina Andriantsoa">
 
 
@@ -15,7 +15,7 @@
   /* ATS : une colonne, vrai texte, titres standards, ni ligatures ni lettres espacées.
      Tazi : une page, une seule couleur (bleu = confiance), trois tailles de texte, du blanc, gras sur l'essentiel. */
   @page { size: A4; margin: 0; }
-  :root { --ink:#16202e; --soft:#4b5563; --mute:#6b7280; --blue:#1d4f91; --line:#d9e2ee; }
+  :root { --ink:#16202e; --soft:#253442; --mute:#455463; --blue:#1d4f91; --line:#d9e2ee; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Source, Arial, sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.26; background: #fff;
          font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "calt" 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -26,13 +26,13 @@
   .meta span + span::before { content: "  |  "; color: #b8c4d4; white-space: pre; }
   .meta span { white-space: nowrap; }
   h2 { margin: 2.3mm 0 1.1mm; padding-bottom: 0.9mm; font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase; border-bottom: 0.35mm solid var(--line); }
-  .summary { color: #243042; }
+  .summary { color: var(--ink); }
   b { font-weight: 700; color: var(--ink); }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 5mm; }
   .row h3 { font-size: 10.5pt; font-weight: 700; }
-  .row h3 span { font-weight: 400; color: var(--soft); }
+  .row h3 span { font-weight: 400; color: var(--ink); }
   .when { color: var(--mute); white-space: nowrap; font-size: 9pt; }
-  .detail { color: var(--soft); margin-top: 0.4mm; }
+  .detail { color: var(--ink); margin-top: 0.4mm; }
   .block { margin-bottom: 1.4mm; break-inside: avoid; }
   .stack { color: var(--blue); font-size: 8.2pt; margin-top: 0.3mm; }
   ul { list-style: none; margin-top: 0.6mm; }
@@ -40,7 +40,7 @@
   li::before { content: ""; position: absolute; left: 0.6mm; top: 1.8mm; width: 1.2mm; height: 1.2mm; border-radius: 50%; background: var(--blue); }
   .skills p { margin-top: 0.6mm; }
   .skills p b { color: var(--blue); }
-  .more { margin-top: 1mm; color: var(--soft); }
+  .more { margin-top: 1mm; color: var(--ink); }
   @media screen and (max-width: 600px) {
     body { font-size: 16px; }
     .page { width: 100%; min-height: auto; padding: 24px 20px; }
@@ -56,22 +56,22 @@
 <body>
 <div class="page">
   <h1>Nirina Andriantsoa</h1>
-  <p class="title">Stage Data Science &amp; IA — Python · SQL · Machine Learning · RAG</p>
+  <p class="title">Stage Data Science &amp; IA - Python · SQL · Machine Learning · RAG</p>
   <p class="meta"><span>6 mois, dès fin février 2027 · Marseille, mobile partout en France</span></p>
   <p class="meta"><span>+33 6 21 63 82 86</span><span>andriants.nirina@gmail.com</span><span>Portfolio : <a href="https://andriantsoa777.github.io" style="color:inherit">andriantsoa777.github.io</a></span></p>
 
   <h2>Profil</h2>
-  <p class="summary">Étudiant en <b>Master 2 SID</b>, je construis des solutions data de bout en bout : <b>prédiction du churn</b>, recherche documentaire <b>RAG</b>, pipelines multimodaux et <b>agents d’automatisation</b>. De la préparation des données à l’API, je relie modélisation, évaluation et usage métier. Mes projets associent volumes réels, explicabilité et contrôles contre les fuites de données.</p>
+  <p class="summary">Étudiant en Master 2 SID, je construis des systèmes data de bout en bout : agents de candidature, production vidéo automatisée, recherche RAG et prédiction. Je relie préparation des données, modèles, API et déploiement, avec explicabilité et suivi des exécutions.</p>
 
   <h2>Formation</h2>
   
   <div class="block">
-    <div class="row"><h3>Master Informatique — SID (Master 2 en cours) <span>— Aix-Marseille Université</span></h3><span class="when">2025 – 2027</span></div>
+    <div class="row"><h3>Master Informatique - SID (Master 2 en cours) <span>- Aix-Marseille Université</span></h3><span class="when">2025 - 2027</span></div>
     <p class="detail">Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, BDD avancées</p>
   </div>
   
   <div class="block">
-    <div class="row"><h3>Licence Informatique <span>— Aix-Marseille Université</span></h3><span class="when">2022 – 2025</span></div>
+    <div class="row"><h3>Licence Informatique <span>- Aix-Marseille Université</span></h3><span class="when">2022 - 2025</span></div>
     
   </div>
   
@@ -79,33 +79,33 @@
   <h2>Projets et réalisations</h2>
   
   <div class="block">
-    <div class="row"><h3>JobCopilot <span>— agents IA &amp; automatisation de workflows</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Automatisation de la collecte, du scoring d’offres, des dossiers et du suivi email. <b>Python, FastAPI, Celery, Playwright</b> ; validation humaine et traçabilité. Agents navigateur / vision ; <b>prototype vocal SIP / STT / TTS</b>, en test.</li></ul>
+    <div class="row"><h3>JobCopilot <span>- agent de candidature et automatisation</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Agent Python / FastAPI : collecte et classement des offres, adaptation du CV et du message, candidature par email et formulaires pris en charge.</li><li>Agents navigateur / vision avec Playwright ; orchestration Celery / Redis, suivi SMTP / IMAP et relances. États et historique persistés dans PostgreSQL.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>Auto Video Factory <span>— agents multimodaux &amp; génération vidéo</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Orchestration <b>Python / LLM</b> : recherche PubMed / Crossref, script, voix <b>TTS</b> et montage <b>FFmpeg</b> ; critique automatique et réparation des scènes, avec revue humaine avant publication.</li></ul>
+    <div class="row"><h3>Auto Video Factory <span>- production vidéo automatisée</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Production automatisée Python / LLM : recherche PubMed / Crossref, script, storyboard, voix TTS, animation et montage FFmpeg synchronisé sur l’audio. Video Critic, réparation ciblée et checkpoints ; planification et intégration YouTube.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>LexPipe <span>— RAG juridique &amp; Data Engineering</span></h3><span class="when">Projet de Master · 2026</span></div>
-    <ul><li>Architecture <b>RAG (Retrieval-Augmented Generation)</b> : ETL Judilibre, DuckDB / Parquet, PostgreSQL / pgvector. <b>563 255 décisions</b> ingérées ; <b>596 456 passages</b> vectorisés sur 245 000 décisions.</li><li>Recherche hybride lexicale / sémantique, embeddings MPNet ; synthèse sourcée, citations et abstention sans preuve.</li></ul>
+    <div class="row"><h3>LexPipe <span>- RAG juridique &amp; Data Engineering</span></h3><span class="when">Projet de Master · 2026</span></div>
+    <ul><li>Architecture RAG (Retrieval-Augmented Generation) : ETL Judilibre, DuckDB / Parquet et PostgreSQL / pgvector. 563 255 décisions ingérées ; 596 456 passages vectorisés sur 245 000 décisions.</li><li>Recherche hybride lexicale / sémantique, embeddings MPNet, synthèse sourcée et citations ; évaluation sur des requêtes annotées.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>Customer Churn Prediction <span>— prédiction de l’attrition client</span></h3><span class="when">Projet ML</span></div>
-    <ul><li>Pipeline de classification sur <b>7 043 clients Telco</b> : nettoyage, <b>analyse exploratoire (EDA)</b>, comparaison de modèles et réglage du seuil ; <b>SHAP</b>, scoring batch, dashboard Streamlit et <b>API FastAPI</b>.</li></ul>
+    <div class="row"><h3>Customer Churn Prediction <span>- prédiction de l’attrition client</span></h3><span class="when">Projet ML</span></div>
+    <ul><li>Prédiction sur 7 043 clients Telco : nettoyage, analyse exploratoire (EDA), comparaison de modèles et seuil de rétention. Explications SHAP, scoring batch, dashboard Streamlit et API FastAPI.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>My Friends <span>— agents conversationnels vocaux</span></h3><span class="when">Personnel · 2026</span></div>
-    <ul><li>Amis IA pour pratiquer l’anglais : <b>mémoire conversationnelle, LLM, STT / TTS</b> et personnalités distinctes ; appels iPhone via <b>Swift / CallKit</b>.</li></ul>
+    <div class="row"><h3>My Friends <span>- agents conversationnels vocaux</span></h3><span class="when">Personnel · 2026</span></div>
+    <ul><li>Agents conversationnels pour pratiquer l’anglais : mémoire des échanges, personnalités, LLM et STT / TTS. Appels iPhone avec Swift / CallKit et répétition espacée du vocabulaire.</li></ul>
   </div>
   
   <div class="block">
-    <div class="row"><h3>FireCast &amp; BankLens <span>— prédiction, SQL &amp; aide à la décision</span></h3><span class="when">Projets data · 2026</span></div>
-    <ul><li><b>FireCast — prédiction des départs de feu</b> : 9,5 M de lignes, 5 modèles comparés, validation temporelle anti-fuite, <b>PR-AUC / F2 et SHAP</b> ; résultats expérimentaux.</li><li><b>BankLens — analyse bancaire</b> : ETL bronze / silver / gold, modèle en étoile de <b>16 tables</b>, <b>28 questions métier SQL</b>, 4 modèles de risque sur données de recherche anonymisées.</li></ul>
+    <div class="row"><h3>FireCast &amp; BankLens <span>- prédiction, SQL &amp; aide à la décision</span></h3><span class="when">Projets data · 2026</span></div>
+    <ul><li>FireCast - prédiction des départs de feu : 9,5 M de lignes, 5 modèles comparés, validation temporelle et séparation des événements ; PR-AUC / F2, calibration et SHAP.</li><li>BankLens - analyse bancaire : ETL bronze / silver / gold, modèle en étoile de 16 tables, 28 questions métier SQL et 4 modèles de risque sur données de recherche anonymisées.</li></ul>
   </div>
   
   <p class="more">Autres réalisations : Nirys (recommandation multimodale, CLAP / pgvector) ; EcomVision (KPI, RFM) ; GospelKeys (transcription audio ML) ; GratiFaith (application publiée iOS / Android).</p>
@@ -116,12 +116,12 @@
   <h2>Expérience professionnelle</h2>
   
   <div class="block">
-    <div class="row"><h3>Équipier polyvalent <span>— McDonald&#39;s Vieux-Port, Marseille</span></h3><span class="when">2023 – aujourd&#39;hui</span></div>
+    <div class="row"><h3>Équipier polyvalent <span>- McDonald&#39;s Vieux-Port, Marseille</span></h3><span class="when">2023 - aujourd&#39;hui</span></div>
     
   </div>
   
   <div class="block">
-    <div class="row"><h3>Employé polyvalent <span>— Super K, Marseille</span></h3><span class="when">2022 – 2023</span></div>
+    <div class="row"><h3>Employé polyvalent <span>- Super K, Marseille</span></h3><span class="when">2022 - 2023</span></div>
     
   </div>
   
