@@ -1,5 +1,5 @@
 const version=new URL(import.meta.url).search;
-const {smooth}=await import('./portal-math.js'+version);
+const {smooth,glide}=await import('./portal-math.js'+version);
 const entry=document.getElementById('depart'),canvas=document.getElementById('portal-scene'),desktop=document.getElementById('desktop');
 const copy=document.querySelector('.portal-copy'),preference=matchMedia('(prefers-reduced-motion: reduce)');
 let requestFrame=()=>{},isInside=true;
@@ -15,6 +15,23 @@ function visibility(){
 addEventListener('scroll',visibility,{passive:true});addEventListener('resize',visibility);
 document.addEventListener('portalvisibility',()=>requestFrame());document.addEventListener('story-handoff',visibility);
 preference.addEventListener('change',visibility);document.fonts?.ready.then(visibility);
+// The invitation is a camera move, not an instant jump past the prologue.
+let cancelEntry=()=>{};
+entry.querySelector('.begin').addEventListener('click',event=>{
+ if(preference.matches||!document.body.classList.contains('portal-ready'))return;
+ event.preventDefault();cancelEntry();
+ const abort=new AbortController(),start=performance.now(),from=scrollY,to=desktop.offsetTop;let frame=0;
+ function cancel(){cancelAnimationFrame(frame);abort.abort();}
+ cancelEntry=cancel;
+ for(const name of ['wheel','touchstart','pointerdown','keydown','resize'])addEventListener(name,cancel,{passive:true,signal:abort.signal});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();},{signal:abort.signal});
+ preference.addEventListener('change',cancel,{signal:abort.signal});
+ function advance(now){const p=Math.max(0,Math.min(1,(now-start)/1800));scrollTo({top:from+(to-from)*glide(p),behavior:'auto'});
+  if(p<1)frame=requestAnimationFrame(advance);
+  else{cancel();history.replaceState(null,'','#desktop');document.getElementById('desktop-title')?.focus({preventScroll:true});}
+ }
+ frame=requestAnimationFrame(advance);
+});
 try{
  const THREE=await import('./vendor/three.module.min.js');
  const {createComputer}=await import('./portal-world.js'+version);
