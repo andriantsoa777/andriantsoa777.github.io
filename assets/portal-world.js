@@ -3,7 +3,9 @@ const {entryPose,burstPhase}=await import('./portal-math.js'+new URL(import.meta
 export function createComputer(THREE,onReady=()=>{}){
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,.06,80);
   const version=new URL(import.meta.url).search;
-  const environment=new THREE.TextureLoader().load('assets/cinema/observatory.webp'+version,onReady);
+  // Prêt quand le décor et l'écran sont chargés : l'accueil se dévoile en une fois, sans état intermédiaire.
+  let pending=2,resolveReady;const ready=new Promise(r=>{resolveReady=r;});const loaded=()=>{onReady();if(--pending===0)resolveReady();};
+  const environment=new THREE.TextureLoader().load('assets/cinema/observatory.webp'+version,loaded,undefined,loaded);
   environment.colorSpace=THREE.SRGBColorSpace;
   const uniforms={photo:{value:environment},zoom:{value:1},aspect:{value:1},dim:{value:.72}};
   const background=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,depthWrite:false,depthTest:false,toneMapped:false,
@@ -37,7 +39,7 @@ export function createComputer(THREE,onReady=()=>{}){
   const ctx=canvas.getContext('2d');
   const displayTexture=new THREE.CanvasTexture(canvas);displayTexture.colorSpace=THREE.SRGBColorSpace;
   let cachedCv=null;
-  const cv=new Image();cv.onload=()=>{cachedCv=cv;drawDisplay(cv);samplePixels();onReady();};cv.src='cv-preview.png'+version;
+  const cv=new Image();cv.onload=()=>{cachedCv=cv;drawDisplay(cv);samplePixels();loaded();};cv.onerror=loaded;cv.src='cv-preview.png'+version;
   function drawDisplay(image){
     ctx.fillStyle='#132331';ctx.fillRect(0,0,2048,1152);
     ctx.fillStyle='#263c4b';ctx.fillRect(0,0,2048,64);ctx.fillStyle='#e7d7bc';ctx.font='24px sans-serif';ctx.fillText('Nirina  /  Mon bureau',46,42);
@@ -110,5 +112,5 @@ export function createComputer(THREE,onReady=()=>{}){
   }
   // Taille des pixels à l'écran : dépend de la hauteur réelle du rendu.
   function setPixelHeight(px){pixelScale.value=px/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov)/2));}
-  return {scene,camera,update,setPixelHeight};
+  return {scene,camera,update,setPixelHeight,ready};
 }

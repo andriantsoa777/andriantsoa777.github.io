@@ -430,3 +430,10 @@ dialog.project-window{background:#081d2b;animation:room-arrival .45s ease-out}
 @keyframes hero-fade{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
 @media(max-width:650px){.portal-copy{top:64svh}.portal-copy::before{inset:-12vh -8vw -6vh -8vw;background:linear-gradient(0deg,#020b14f0 30%,#020b14a0 70%,transparent)}.portal-copy .hero-title{font-size:2.9rem}}
 @media(prefers-reduced-motion:reduce){.portal-copy :is(.eyebrow,.hero-title .w,.hero-title::after,.story-text,.aside,.begin){animation:none!important}.portal-copy .hero-title .line-2 .w{background-position:50% 0}}
+/* Chargement : un voile couvre l'accueil jusqu'à ce que décor, écran 3D et polices soient prêts. */
+.hero-veil{display:none}
+.js .hero-veil{display:block;position:fixed;inset:0;z-index:90;background:#030b13;pointer-events:none;transition:opacity 1.3s cubic-bezier(.4,0,.2,1),visibility 0s linear 1.3s}
+.js.hero-go .hero-veil{opacity:0;visibility:hidden}
+.js .portal-static-monitor{display:none}
+.js .portal-failed .portal-static-monitor{display:block}
+.js:not(.hero-go) .portal-copy :is(.eyebrow,.hero-title .w,.story-text,.aside,.begin),.js:not(.hero-go) .portal-copy .hero-title::after{animation-play-state:paused}

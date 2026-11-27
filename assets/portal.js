@@ -2,6 +2,8 @@ const version=new URL(import.meta.url).search;
 const {smooth,glide,portalHandoff}=await import('./portal-math.js'+version);
 const entry=document.getElementById('depart'),canvas=document.getElementById('portal-scene'),desktop=document.getElementById('desktop');
 const copy=document.querySelector('.portal-copy'),preference=matchMedia('(prefers-reduced-motion: reduce)');
+// Lever le voile d'accueil une seule fois, quand tout est prêt (ou en repli).
+const heroGo=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.classList.add('hero-go')));
 let requestFrame=()=>{},snapToDesktop=()=>{},isInside=true,focusDesktop=false;
 function target(){return Math.max(0,Math.min(1,(scrollY-entry.offsetTop)/Math.max(1,entry.offsetHeight-innerHeight)));}
 function visibility(){
@@ -57,7 +59,8 @@ try{
  requestFrame=()=>{if(!frame&&isInside&&!document.hidden)frame=requestAnimationFrame(draw);};
  function resize(){renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(innerWidth,innerHeight,false);world.camera.aspect=innerWidth/innerHeight;world.camera.updateProjectionMatrix();world.setPixelHeight(innerHeight*renderer.getPixelRatio());visibility();}
  document.addEventListener('visibilitychange',()=>{last=0;requestFrame();});addEventListener('resize',resize);
- canvas.addEventListener('webglcontextlost',()=>{lost=true;cancelAnimationFrame(frame);canvas.hidden=true;copy.style.opacity=1;copy.style.transform='none';document.body.classList.remove('portal-ready');document.body.classList.add('portal-failed');desktop.inert=false;});
+ canvas.addEventListener('webglcontextlost',()=>{lost=true;cancelAnimationFrame(frame);canvas.hidden=true;copy.style.opacity=1;copy.style.transform='none';document.body.classList.remove('portal-ready');document.body.classList.add('portal-failed');desktop.inert=false;heroGo();});
  resize();document.body.classList.add('portal-ready');
-}catch(error){canvas.hidden=true;document.body.classList.add('portal-failed');console.info('Le bureau reste accessible sans WebGL.',error);}
+ Promise.race([Promise.all([world.ready,document.fonts?.ready]),new Promise(r=>setTimeout(r,4000))]).then(()=>{last=0;requestFrame();heroGo();});
+}catch(error){canvas.hidden=true;document.body.classList.add('portal-failed');heroGo();console.info('Le bureau reste accessible sans WebGL.',error);}
 visibility();
