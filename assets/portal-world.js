@@ -5,12 +5,14 @@ export function createComputer(THREE,onReady=()=>{}){
   const version=new URL(import.meta.url).search;
   const environment=new THREE.TextureLoader().load('assets/cinema/observatory.webp'+version,onReady);
   environment.colorSpace=THREE.SRGBColorSpace;
-  const uniforms={photo:{value:environment},zoom:{value:1},aspect:{value:1}};
+  const uniforms={photo:{value:environment},zoom:{value:1},aspect:{value:1},dim:{value:.72}};
   const background=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms,depthWrite:false,depthTest:false,toneMapped:false,
     vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,.999,1.);}',
-    fragmentShader:`varying vec2 vUv;uniform sampler2D photo;uniform float zoom,aspect;
+    fragmentShader:`varying vec2 vUv;uniform sampler2D photo;uniform float zoom,aspect,dim;
       void main(){vec2 fit=aspect>16./9.?vec2(1.,(16./9.)/aspect):vec2(aspect/(16./9.),1.);
       vec2 uv=(vUv-.5)*fit/zoom+.5;gl_FragColor=texture2D(photo,uv);
+      // Décor en retrait tant que le texte d'accueil est lu ; il s'éclaire quand on descend.
+      float vig=smoothstep(1.2,.3,length((vUv-vec2(.62,.5))*vec2(1.25,1.)));gl_FragColor.rgb*=mix(.45,1.,vig)*dim;
       #include <colorspace_fragment>
       }`}));background.renderOrder=-100;background.frustumCulled=false;scene.add(background);
   scene.add(new THREE.HemisphereLight('#d2e8ff','#412b17',2.2));
@@ -101,7 +103,7 @@ export function createComputer(THREE,onReady=()=>{}){
     const pose=entryPose(progress,mobile,camera.aspect);computer.position.set(mobile?0:1.5,mobile?-.42:.65,0);
     computer.rotation.set((1-pose.travel)*.018,(1-pose.travel)*-.075,0);
     camera.position.set(pose.x,pose.y,pose.z);camera.lookAt(pose.lookX,pose.lookY,.147);camera.rotation.z+=pose.roll;
-    uniforms.aspect.value=camera.aspect;uniforms.zoom.value=1+pose.travel*.12;
+    uniforms.aspect.value=camera.aspect;uniforms.dim.value=.72+.28*Math.min(1,Math.max(0,progress/.3));uniforms.zoom.value=1+pose.travel*.12;
     burst.value=burstPhase(progress);led.material.color.setStyle(burst.value>0?'#ffd9a8':'#edc99a');
     shell.material.roughness=.24;dust.rotation.y=pose.travel*.08;warm.intensity=55+pose.travel*8;
     return pose;
