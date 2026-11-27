@@ -43,9 +43,11 @@ export async function mountLaunch(dialog,view,onFinish){
  dialog.addEventListener('keydown',event=>{
   if(event.key==='Tab'){input.tab();sequence.reset();progress=0;resetStyles();status.textContent='Le lien permet de poursuivre sans animation.';requestFrame();return;}
   const editing=event.target.closest?.('input,textarea,select,video');
-  if(!editing&&['PageDown','End','ArrowDown',' '].includes(event.key))gesture(event);
+  const controlSpace=event.key===' '&&event.target.closest?.('a,button,summary');
+  if(!editing&&!controlSpace&&['PageDown','End','ArrowDown',' '].includes(event.key))gesture(event);
  },{signal:abort.signal});
- dialog.addEventListener('scroll',requestFrame,{passive:true,signal:abort.signal});
+ dialog.addEventListener('focusin',event=>{if(event.target.closest?.('.launch-actions')){input.tab();sequence.reset();progress=0;resetStyles();requestFrame();}},{signal:abort.signal});
+ dialog.addEventListener('scroll',event=>{if(event.isTrusted&&!input.manual)input.gesture(performance.now());requestFrame();},{passive:true,signal:abort.signal});
  addEventListener('resize',resize,{signal:abort.signal});reduced.addEventListener('change',mode,{signal:abort.signal});
  document.addEventListener('motionchange',mode,{signal:abort.signal});document.addEventListener('visibilitychange',()=>{last=0;if(document.hidden)hiddenAt=performance.now();else{if(hiddenAt)sequence.delay(performance.now()-hiddenAt);hiddenAt=0;requestFrame();}},{signal:abort.signal});
  try{const THREE=await import('./vendor/three.module.min.js');const {createRocket}=await import('./rocket-world.js'+version);
