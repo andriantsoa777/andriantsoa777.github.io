@@ -437,3 +437,5 @@ dialog.project-window{background:#081d2b;animation:room-arrival .45s ease-out}
 .js .portal-static-monitor{display:none}
 .js .portal-failed .portal-static-monitor{display:block}
 .js:not(.hero-go) .portal-copy :is(.eyebrow,.hero-title .w,.story-text,.aside,.begin),.js:not(.hero-go) .portal-copy .hero-title::after{animation-play-state:paused}
+.film-music{font-size:.75rem!important;opacity:.6;margin-top:.4rem}
+.film-music a{color:inherit}
