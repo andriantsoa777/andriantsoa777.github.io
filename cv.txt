@@ -3,50 +3,54 @@ Stage Data Science & IA - Python · SQL · Machine Learning · RAG
 6 mois, dès fin février 2027 · Marseille, mobile partout en France
 +33 6 21 63 82 86 | andriants.nirina@gmail.com | Portfolio : andriantsoa777.github.io
 PROFIL
-Étudiant en Master 2 SID, je construis des systèmes data de bout en bout : agents de candidature, production vidéo
-automatisée, recherche RAG et prédiction. Je relie préparation des données, modèles, API et déploiement, avec explicabilité
-et suivi des exécutions.
+À l'université, j'apprends à résoudre des problèmes. En dehors, je transforme mes idées en solutions concrètes. Étudiant en
+Master 2 SID, je conçois des systèmes intelligents de bout en bout, de l'exploration des données jusqu'au déploiement.
 FORMATION
-Master Informatique - SID (Master 2 en cours) - Aix-Marseille Université                                      2025 - 2027
-Intégration et exploration des données, apprentissage automatique, traitement automatique des langues, BDD avancées
+Master Informatique - SID (Master 2 en cours) - Aix-Marseille Université                                              2025 - 2027
 Licence Informatique - Aix-Marseille Université                                                                       2022 - 2025
 
-PROJETS ET RÉALISATIONS
-JobCopilot - agent de candidature et automatisation                                                              Personnel · 2026
-  Agent Python / FastAPI : collecte et classement des offres, adaptation du CV et du message, candidature par email et
-  formulaires pris en charge.
-  Agents navigateur / vision avec Playwright ; orchestration Celery / Redis, suivi SMTP / IMAP et relances. États et historique
-  persistés dans PostgreSQL.
-Auto Video Factory - production vidéo automatisée                                                                Personnel · 2026
-  Production automatisée Python / LLM : recherche PubMed / Crossref, script, storyboard, voix TTS, animation et montage
-  FFmpeg synchronisé sur l’audio. Video Critic, réparation ciblée et checkpoints ; planification et intégration YouTube.
-LexPipe - RAG juridique & Data Engineering                                                            Projet de Master · 2026
-  Architecture RAG (Retrieval-Augmented Generation) : ETL Judilibre, DuckDB / Parquet et PostgreSQL / pgvector. 563 255
-  décisions ingérées ; 596 456 passages vectorisés sur 245 000 décisions.
-  Recherche hybride lexicale / sémantique, embeddings MPNet, synthèse sourcée et citations ; évaluation sur des requêtes
-  annotées.
-Customer Churn Prediction - prédiction de l’attrition client                                                         Projet ML
-  Prédiction sur 7 043 clients Telco : nettoyage, analyse exploratoire (EDA), comparaison de modèles et seuil de rétention.
-  Explications SHAP, scoring batch, dashboard Streamlit et API FastAPI.
-My Friends - agents conversationnels vocaux                                                                 Personnel · 2026
- Agents conversationnels pour pratiquer l’anglais : mémoire des échanges, personnalités, LLM et STT / TTS. Appels iPhone
- avec Swift / CallKit et répétition espacée du vocabulaire.
-FireCast & BankLens - prédiction, SQL & aide à la décision                                                    Projets data · 2026
-  FireCast - prédiction des départs de feu : 9,5 M de lignes, 5 modèles comparés, validation temporelle et séparation des
-  événements ; PR-AUC / F2, calibration et SHAP.
-  BankLens - analyse bancaire : ETL bronze / silver / gold, modèle en étoile de 16 tables, 28 questions métier SQL et 4
-  modèles de risque sur données de recherche anonymisées.
-Autres réalisations : Nirys (recommandation multimodale, CLAP / pgvector) ; EcomVision (KPI, RFM) ; GospelKeys
-(transcription audio ML) ; GratiFaith (application publiée iOS / Android).
-COMPÉTENCES
-Data Science & analyse : Python, SQL, Pandas, scikit-learn, XGBoost, EDA, classification, SHAP, PR-AUC / F2, segmentation
-RFM / K-Means
-IA générative & agents : LLM, RAG, NLP, embeddings, recherche hybride, pgvector, Playwright, STT / TTS
-Data Engineering & BI : ETL, DuckDB, Parquet, PostgreSQL, modèle en étoile, qualité des données, KPI, Streamlit / Plotly
-Développement & déploiement : FastAPI, Redis / Celery, TypeScript, React / Next.js, Docker / Podman, Linux, Git, tests
-unitaires et intégration
-Langues : Français (courant) · Malgache (langue maternelle) · Anglais (professionnel)
-EXPÉRIENCE PROFESSIONNELLE
+EXPÉRIENCES PROFESSIONNELLES ET PROJETS PERSONNELS
+JobCopilot - Et si la recherche d’emploi devenait intelligente ?                                          Projet personnel · 2026
+  Conception d’un agent IA capable de rechercher et classer les offres, personnaliser les candidatures, naviguer sur les sites
+  de recrutement et gérer les relances.
+  Architecture multi-agents : Python, FastAPI, Playwright, Celery, Redis, PostgreSQL, SMTP/IMAP.
+Auto Video Factory - De l’idée à la vidéo, automatiquement                                                Projet personnel · 2026
+  Création d’un système automatisant la production vidéo : recherche scientifique, rédaction, storyboard, narration,
+  animation, montage et intégration YouTube.
+  Intégration d’un agent critique capable d’évaluer les vidéos et de déclencher des corrections ciblées. Python, LLM, TTS,
+  FFmpeg, PubMed, Crossref.
+LexPipe - Rendre des centaines de milliers de décisions de justice interrogeables                         Projet de Master · 2026
+  Conception d’un système RAG juridique combinant recherche lexicale et sémantique, génération de réponses sourcées et
+  citations.
+  Pipeline de 563 255 décisions ingérées et 596 456 passages vectorisés. ETL, DuckDB, Parquet, PostgreSQL, pgvector,
+  MPNet.
+Customer Churn Prediction - Anticiper le départ d’un client                                       Projet Machine Learning · 2025
+  Développement d’un système prédictif sur 7 043 clients, de l’analyse exploratoire à la comparaison des modèles et à la
+  détermination du seuil de rétention.
+  Explicabilité SHAP, scoring batch, dashboard Streamlit et API FastAPI.
+My Friends - Des amis virtuels qui vous appellent pour vous faire progresser en anglais                   Projet personnel · 2025
+  Création d’agents conversationnels dotés de personnalités distinctes et d’une mémoire des échanges, capables d’interagir
+  vocalement sur iPhone.
+  LLM, STT/TTS, Swift, CallKit et apprentissage du vocabulaire par répétition espacée.
+FireCast - Peut-on anticiper un départ de feu ?                                                        Projet Data Science · 2026
+  Exploitation de 9,5 millions de lignes de données pour prédire les départs de feu.
+  Comparaison de cinq modèles, validation temporelle, calibration, PR-AUC, F2 et explicabilité SHAP.
+BankLens - Transformer les données bancaires en décisions                                     Projet Data Engineering & BI · 2026
+  Construction d’une architecture Bronze/Silver/Gold et d’un modèle en étoile de 16 tables.
+  Analyse de 28 problématiques métier en SQL et développement de quatre modèles de risque sur des données
+  anonymisées.
+Autres réalisations
+  Nirys : Recommandation musicale multimodale avec CLAP et pgvector.
+  EcomVision : Analyse des comportements clients, KPI et segmentation RFM. · 2025
+  GospelKeys : Transcription audio par Machine Learning.
+  GratiFaith : Fondateur de l’application GratiFaith pour le bien-être. · 2025
 Équipier polyvalent - McDonald's Vieux-Port, Marseille                                                         2023 - aujourd'hui
 Employé polyvalent - Super K, Marseille                                                                               2022 - 2023
+
+COMPÉTENCES
+Data Science & analyse : Python, SQL, Pandas, scikit-learn, XGBoost, EDA, prédiction / classification, SHAP, PR-AUC / F2
+IA générative & agents : LLM, RAG (Retrieval-Augmented Generation), NLP, embeddings, recherche hybride, pgvector,
+Playwright, STT / TTS
+Data Engineering & API : ETL, DuckDB, Parquet, PostgreSQL, FastAPI, Redis / Celery, Docker / Podman, Linux, Git, tests
+Langues : Français · Anglais · Malgache
 

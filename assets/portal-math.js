@@ -14,3 +14,9 @@ export function entryPose(progress,mobile=false,aspect=mobile?390/740:16/9){
   roll:arc*.015,focus:smooth((p-.4)/.5),opacity:1-smooth((p-.96)/.04),
   copyOpacity:1-smooth(mobile?(p-.14)/.24:(p-.03)/.24),copyOffset:-smooth(p/.35)*32};
 }
+// Pin the interactive desktop to the viewport only after the lens fills with screen.
+// Its layout box remains in the document, so no scroll height / position can jump.
+export function portalHandoff(progress,scroll,desktopTop){
+ const reveal=smooth((progress-.88)/.10);
+ return{reveal,offset:Math.min(0,scroll-desktopTop),inert:reveal<.995};
+}
