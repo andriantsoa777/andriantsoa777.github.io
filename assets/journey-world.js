@@ -1,7 +1,7 @@
 // Cinéma photographique : images mises en scène, profondeur par parallaxe,
 // brume volumétrique calculée et lumière 3D continue. Ce n’est pas une scène
 // photogrammétrique ni une capture des applications présentées.
-export const SHOTS=['depart','observatory','contact'];
+export const SHOTS=['observatory','observatory','observatory'];
 export function shotAt(phase){
   const frame=Math.max(0,Math.min(SHOTS.length-1,Math.floor(phase)));
   const t=Math.max(0,Math.min(1,(phase-frame-.60)/.40));

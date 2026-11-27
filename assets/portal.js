@@ -10,11 +10,11 @@ function visibility(){
   const inEntry=scrollY<entry.offsetTop+entry.offsetHeight-innerHeight*.08;
   const top=mission.offsetTop,end=top+mission.offsetHeight;
   missionVisible=scrollY>=top-innerHeight*.22&&scrollY<end-innerHeight*.04;
-  isInside=inEntry||missionVisible;
+  isInside=inEntry;
   const p=missionProgress(scrollY,top,mission.offsetHeight,innerHeight);
   const hero=1-smooth((p-.22)/.13),reveal=smooth((p-.37)/.13);
   mission.style.setProperty('--mission-hero',hero);mission.style.setProperty('--mission-reveal',reveal);
-  const stacked=innerWidth>=800&&innerHeight>=850&&!preference.matches;opening.inert=stacked&&hero<.1;blueprint.inert=stacked&&reveal<.1;
+  const stacked=innerWidth>=800&&innerHeight>=720&&!preference.matches;opening.inert=stacked&&hero<.1;blueprint.inert=stacked&&reveal<.1;
   const step=Math.min(3,Math.max(0,Math.floor((p-.35)/.6*4)));
   mission.querySelectorAll('[data-mission-step]').forEach((el,i)=>el.toggleAttribute('data-current',i===step));
   const alpha=Math.min(smooth((scrollY-top+innerHeight*.22)/(innerHeight*.22)),1-smooth((scrollY-end+innerHeight*.8)/(innerHeight*.76)));
@@ -23,8 +23,8 @@ function visibility(){
   document.body.classList.toggle('desktop-on',scrollY>=desktop.offsetTop-innerHeight*.08&&scrollY<desktop.offsetTop+desktop.offsetHeight-innerHeight*.15);
   document.body.classList.toggle('portal-on',inEntry&&scrollY<entry.offsetHeight-innerHeight*.93);
   document.body.classList.toggle('mission-on',missionVisible);
-  document.body.classList.toggle('mission-cover',missionVisible&&alpha>.995&&document.body.classList.contains('portal-ready'));
-  canvas.hidden=!isInside;requestFrame();
+  document.body.classList.toggle('mission-cover',false);
+  canvas.hidden=!inEntry;requestFrame();
   if(wasInside!==isInside||wasCovered!==document.body.classList.contains('mission-cover'))document.dispatchEvent(new Event('portalvisibility'));
 }
 document.addEventListener('portalvisibility',()=>requestFrame());
