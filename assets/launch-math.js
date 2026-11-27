@@ -26,3 +26,11 @@ export class LaunchSequence{
   return{progress:this.progress,armed:this.armed,finished};
  }
 }
+
+// Focus navigation must never count as an invitation to launch the page.
+export class LaunchInput{
+ constructor(){this.last=-Infinity;this.manual=false;this.engaged=false;}
+ gesture(now){this.last=now;this.manual=false;}
+ tab(){this.last=-Infinity;this.manual=true;this.engaged=false;}
+ target(raw,now){if(raw<=0)this.engaged=false;if(!this.manual&&raw>0&&now-this.last<1800)this.engaged=true;return this.engaged&&!this.manual?raw:0;}
+}

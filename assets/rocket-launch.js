@@ -1,5 +1,5 @@
 const version=new URL(import.meta.url).search;
-const {launchProgress,LaunchSequence}=await import('./launch-math.js'+version);
+const {launchProgress,LaunchSequence,LaunchInput}=await import('./launch-math.js'+version);
 function offsetWithin(node,root){let top=0;for(let e=node;e&&e!==root;e=e.offsetParent)top+=e.offsetTop;return top;}
 export async function mountLaunch(dialog,view,onFinish){
  const zone=view.querySelector('[data-launch-deck]');if(!zone)return()=>{};
@@ -7,7 +7,7 @@ export async function mountLaunch(dialog,view,onFinish){
  const canvas=document.createElement('canvas');layer.append(canvas);dialog.append(layer);
  const status=zone.querySelector('[data-launch-status]'),instruction=zone.querySelector('.launch-instruction');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');let destroyed=false,frame=0,last=0,time=0,progress=0,hiddenAt=0;
- const sequence=new LaunchSequence();
+ const sequence=new LaunchSequence(),input=new LaunchInput();
  let renderer,world,observer;const abort=new AbortController();
  const canMove=()=>innerHeight>=560&&!reduced.matches&&!document.body.classList.contains('motion-paused');
  function mode(){const enabled=canMove()&&!!renderer;zone.toggleAttribute('data-launch-ready',enabled);zone.toggleAttribute('data-launch-disabled',!enabled);
@@ -19,7 +19,7 @@ export async function mountLaunch(dialog,view,onFinish){
  function target(){return launchProgress(dialog.scrollTop,offsetWithin(zone,dialog),zone.offsetHeight,dialog.clientHeight);}
  function draw(now){frame=0;if(destroyed||document.hidden||!canMove()||!renderer)return;
   const dt=Math.min(last?(now-last)/1000:1/60,.1);last=now;time+=dt;
-  const wanted=target();
+  const wanted=input.target(target(),now);
   const wasArmed=sequence.armed,state=sequence.update(wanted,now,dt);progress=state.progress;
   dialog.classList.toggle('launch-armed',state.armed);
   if(state.armed&&!wasArmed)status.textContent='Décollage. Retour au plan de mission.';
@@ -37,6 +37,14 @@ export async function mountLaunch(dialog,view,onFinish){
   renderer?.dispose();renderer?.forceContextLoss();
  }
  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();cancelAnimationFrame(frame);frame=0;renderer?.dispose();renderer=undefined;sequence.reset();mode();},{signal:abort.signal});
+ function gesture(event){if(event.isTrusted){input.gesture(performance.now());requestFrame();}}
+ dialog.addEventListener('wheel',gesture,{passive:true,signal:abort.signal});
+ dialog.addEventListener('touchmove',gesture,{passive:true,signal:abort.signal});
+ dialog.addEventListener('keydown',event=>{
+  if(event.key==='Tab'){input.tab();sequence.reset();progress=0;resetStyles();status.textContent='Le lien permet de poursuivre sans animation.';requestFrame();return;}
+  const editing=event.target.closest?.('input,textarea,select,video');
+  if(!editing&&['PageDown','End','ArrowDown',' '].includes(event.key))gesture(event);
+ },{signal:abort.signal});
  dialog.addEventListener('scroll',requestFrame,{passive:true,signal:abort.signal});
  addEventListener('resize',resize,{signal:abort.signal});reduced.addEventListener('change',mode,{signal:abort.signal});
  document.addEventListener('motionchange',mode,{signal:abort.signal});document.addEventListener('visibilitychange',()=>{last=0;if(document.hidden)hiddenAt=performance.now();else{if(hiddenAt)sequence.delay(performance.now()-hiddenAt);hiddenAt=0;requestFrame();}},{signal:abort.signal});
