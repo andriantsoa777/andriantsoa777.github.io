@@ -9,8 +9,8 @@ function visibility(){
  document.body.classList.toggle('desktop-on',scrollY>=desktop.offsetTop-innerHeight*.08&&scrollY<desktop.offsetTop+desktop.offsetHeight-innerHeight*.15);
  document.body.classList.toggle('portal-on',isInside&&scrollY<entry.offsetHeight-innerHeight*.93);
  document.body.classList.toggle('motion-paused',preference.matches);
- canvas.hidden=!isInside||document.body.classList.contains('portal-failed');
- if(!isInside){desktop.style.setProperty('--desktop-reveal',1);desktop.style.setProperty('--desktop-offset','0px');desktop.inert=false;}requestFrame();
+ if(!isInside)document.body.classList.remove('portal-overlay');canvas.hidden=!isInside||document.body.classList.contains('portal-failed');
+ if(!isInside){desktop.style.setProperty('--desktop-reveal',1);desktop.style.setProperty('--desktop-offset','0px');desktop.inert=false;desktop.classList.add('arrived');}requestFrame();
  if(before!==isInside)document.dispatchEvent(new Event('portalvisibility'));
 }
 addEventListener('scroll',visibility,{passive:true});addEventListener('resize',visibility);
@@ -40,14 +40,14 @@ try{
  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
  const world=createComputer(THREE,()=>requestFrame());let frame=0,last=0,current=target(),lost=false;
  snapToDesktop=()=>{current=target();last=0;};
- function present(p){const state=preference.matches?{reveal:1,offset:0,inert:false}:portalHandoff(p,scrollY,desktop.offsetTop);desktop.style.setProperty('--desktop-reveal',state.reveal);desktop.style.setProperty('--desktop-offset',state.offset+'px');desktop.inert=state.inert;if(focusDesktop&&!state.inert){focusDesktop=false;document.getElementById('desktop-title')?.focus({preventScroll:true});}return state;}
+ function present(p){const state=preference.matches?{reveal:1,offset:0,inert:false}:portalHandoff(p,scrollY,desktop.offsetTop);desktop.style.setProperty('--desktop-reveal',state.reveal);desktop.style.setProperty('--desktop-offset',state.offset+'px');desktop.inert=state.inert;desktop.classList.toggle('arrived',state.reveal>.3);if(focusDesktop&&!state.inert){focusDesktop=false;document.getElementById('desktop-title')?.focus({preventScroll:true});}return state;}
  function draw(now){frame=0;if(lost||document.hidden||!isInside||document.body.classList.contains('experience-open')){last=0;return;}
   const wanted=target(),dt=Math.min(last?(now-last)/1000:1/60,.1);last=now;
   current=preference.matches?wanted:current+(wanted-current)*(1-Math.exp(-dt*13));
   const handoff=present(current);
-  if(current>.9995){canvas.style.opacity=0;copy.style.opacity=0;return;}
-  const pose=world.update(preference.matches?0:current,0,innerWidth<650);
-  canvas.style.opacity=preference.matches?1-smooth((current-.45)/.15):handoff.reveal>=.999?0:1;
+  if(current>.9995){canvas.style.opacity=0;document.body.classList.remove('portal-overlay');copy.style.opacity=0;return;}
+  const pose=world.update(preference.matches?0:current,0,innerWidth<650,preference.matches?0:handoff.reveal);document.body.classList.toggle('portal-overlay',!preference.matches&&handoff.reveal>0);
+  canvas.style.opacity=preference.matches?1-smooth((current-.45)/.15):1;
   copy.style.opacity=preference.matches?1:pose.copyOpacity;copy.style.transform=preference.matches?'none':`translateY(${pose.copyOffset}px)`;
   entry.style.setProperty('--portal-focus',preference.matches?0:pose.focus);
   renderer.render(world.scene,world.camera);
@@ -55,7 +55,7 @@ try{
   if(!preference.matches&&Math.abs(wanted-current)>.0003)frame=requestAnimationFrame(draw);
  }
  requestFrame=()=>{if(!frame&&isInside&&!document.hidden)frame=requestAnimationFrame(draw);};
- function resize(){renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(innerWidth,innerHeight,false);world.camera.aspect=innerWidth/innerHeight;world.camera.updateProjectionMatrix();visibility();}
+ function resize(){renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(innerWidth,innerHeight,false);world.camera.aspect=innerWidth/innerHeight;world.camera.updateProjectionMatrix();world.setPixelHeight(innerHeight*renderer.getPixelRatio());visibility();}
  document.addEventListener('visibilitychange',()=>{last=0;requestFrame();});addEventListener('resize',resize);
  canvas.addEventListener('webglcontextlost',()=>{lost=true;cancelAnimationFrame(frame);canvas.hidden=true;copy.style.opacity=1;copy.style.transform='none';document.body.classList.remove('portal-ready');document.body.classList.add('portal-failed');desktop.inert=false;});
  resize();document.body.classList.add('portal-ready');

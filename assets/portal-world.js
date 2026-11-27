@@ -1,4 +1,4 @@
-const {entryPose}=await import('./portal-math.js'+new URL(import.meta.url).search);
+const {entryPose,burstPhase}=await import('./portal-math.js'+new URL(import.meta.url).search);
 // Un ordinateur réellement modélisé. Le décor architectural est une image générée.
 export function createComputer(THREE,onReady=()=>{}){
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,.06,80);
@@ -35,7 +35,7 @@ export function createComputer(THREE,onReady=()=>{}){
   const ctx=canvas.getContext('2d');
   const displayTexture=new THREE.CanvasTexture(canvas);displayTexture.colorSpace=THREE.SRGBColorSpace;
   let cachedCv=null;
-  const cv=new Image();cv.onload=()=>{cachedCv=cv;drawDisplay(cv);onReady();};cv.src='cv-preview.png'+version;
+  const cv=new Image();cv.onload=()=>{cachedCv=cv;drawDisplay(cv);samplePixels();onReady();};cv.src='cv-preview.png'+version;
   function drawDisplay(image){
     ctx.fillStyle='#132331';ctx.fillRect(0,0,2048,1152);
     ctx.fillStyle='#263c4b';ctx.fillRect(0,0,2048,64);ctx.fillStyle='#e7d7bc';ctx.font='24px sans-serif';ctx.fillText('Nirina  /  Mon bureau',46,42);
@@ -45,7 +45,49 @@ export function createComputer(THREE,onReady=()=>{}){
     ctx.font='32px sans-serif';names.forEach((name,i)=>{ctx.fillStyle='#b88e5c';ctx.fillRect(850,300+i*70,36,28);ctx.fillStyle='#e7e5df';ctx.fillText(name,915,328+i*70);});
     ctx.font='23px sans-serif';ctx.fillStyle='#bdcad2';ctx.fillText('Des questions. Des données. Des projets.',850,1020);displayTexture.needsUpdate=true;
   }
-  drawDisplay();const display=new THREE.Mesh(new THREE.PlaneGeometry(4.43,2.49),new THREE.MeshBasicMaterial({map:displayTexture,toneMapped:false}));display.position.set(0,.025,.147);display.name='cv-screen';computer.add(display);
+  // L'écran devient une fenêtre : derrière lui, le même fond que le bureau HTML.
+  const backdropOpacity={value:1};
+  const backdrop=new THREE.Mesh(new THREE.PlaneGeometry(4.43,2.49),new THREE.ShaderMaterial({toneMapped:false,transparent:true,uniforms:{uO:backdropOpacity},
+    vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    fragmentShader:`varying vec2 vUv;uniform float uO;void main(){vec2 d=(vUv-vec2(.75,.8))*vec2(1.,1.25);float r=length(d)/.95;
+      vec3 c=r<.6?mix(vec3(.208,.318,.357),vec3(.075,.169,.227),r/.6):mix(vec3(.075,.169,.227),vec3(.063,.137,.204),clamp((r-.6)/.4,0.,1.));
+      gl_FragColor=vec4(c,uO);}`}));backdrop.position.set(0,.025,.136);computer.add(backdrop);
+  const GLSL_DELAY=`float hash(vec2 c){return fract(sin(dot(c,vec2(12.9898,78.233)))*43758.5453);}
+    float delayOf(vec2 uv,float seed){return .15+.38*(uv.x*.65+(1.-uv.y)*.35)+.09*seed;}
+    float sweepGlow(float x,float s){return exp(-pow((x-s/.25*1.15+.075)*18.,2.))*(1.-smoothstep(.22,.32,s));}`;
+  const W=320,H=180,burst={value:0},pixelScale={value:900};
+  const display=new THREE.Mesh(new THREE.PlaneGeometry(4.43,2.49),new THREE.ShaderMaterial({toneMapped:false,transparent:true,
+    uniforms:{map:{value:displayTexture},uS:burst},
+    vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    fragmentShader:`varying vec2 vUv;uniform sampler2D map;uniform float uS;${GLSL_DELAY}
+      void main(){vec2 cell=floor(vUv*vec2(${W}.,${H}.));vec2 cu=(cell+.5)/vec2(${W}.,${H}.);
+      if(uS>delayOf(cu,hash(cell)))discard;
+      gl_FragColor=texture2D(map,vUv);gl_FragColor.rgb+=vec3(1.,.78,.5)*sweepGlow(vUv.x,uS)*.55;
+      #include <colorspace_fragment>
+      }`}));display.position.set(0,.025,.147);display.name='cv-screen';computer.add(display);
+  // Un point par pixel de l'écran : ils reprennent sa couleur exacte au moment de partir.
+  const count=W*H,positions=new Float32Array(count*3),colors=new Float32Array(count*3),cells=new Float32Array(count*2);
+  for(let iy=0;iy<H;iy++)for(let ix=0;ix<W;ix++){const i=iy*W+ix,u=(ix+.5)/W,v=1-(iy+.5)/H;
+    positions.set([-2.215+u*4.43,.025-1.245+v*2.49,.147],i*3);cells.set([ix,H-1-iy],i*2);colors.set([.07,.14,.19],i*3);}
+  const pixelGeometry=new THREE.BufferGeometry();pixelGeometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  pixelGeometry.setAttribute('color',new THREE.BufferAttribute(colors,3));pixelGeometry.setAttribute('cell',new THREE.BufferAttribute(cells,2));
+  const pixels=new THREE.Points(pixelGeometry,new THREE.ShaderMaterial({transparent:true,depthWrite:false,toneMapped:false,
+    uniforms:{uS:burst,uScale:pixelScale,uSize:{value:4.43/W*1.08}},
+    vertexShader:`attribute vec3 color;attribute vec2 cell;uniform float uS,uScale,uSize;varying vec3 vColor;varying float vAlpha,vT;${GLSL_DELAY}
+      void main(){vec2 uv=(cell+.5)/vec2(${W}.,${H}.);float seed=hash(cell);
+      float t=clamp((uS-delayOf(uv,seed))/.38,0.,1.),e=t*t;vT=t;
+      vec3 p=position;vec2 c=p.xy-vec2(0.,.025);float a=e*(1.2+seed*2.4)*(fract(seed*7.31)>.5?1.:-1.);
+      c=mat2(cos(a),sin(a),-sin(a),cos(a))*c*(1.+e*(1.4+seed*2.2));p.xy=c+vec2(0.,.025);p.z+=e*(2.+seed*2.4);
+      vec4 mv=modelViewMatrix*vec4(p,1.);float d=-mv.z;
+      gl_PointSize=t>0.?min(uSize*(1.+t*1.6)*uScale/max(d,.01),36.):0.;
+      vColor=max(mix(color,vec3(1.,.84,.6),t*.6),vec3(.3,.24,.17)*smoothstep(0.,.3,t))+vec3(1.,.8,.5)*sweepGlow(uv.x,uS)*.55;
+      float lum=dot(color,vec3(.3,.59,.11));vAlpha=(1.-smoothstep(.7,1.,t))*mix(.45,1.,smoothstep(.1,.5,lum))*smoothstep(.12,.7,d)*step(.0001,t);gl_Position=projectionMatrix*mv;}`,
+    fragmentShader:'varying vec3 vColor;varying float vAlpha,vT;void main(){if(vAlpha<.003)discard;vec2 q=gl_PointCoord-.5;float r=dot(q,q);gl_FragColor=vec4(vColor,vAlpha*mix(1.,1.-smoothstep(.08,.25,r),smoothstep(0.,.25,vT)));}'}));
+  pixels.frustumCulled=false;pixels.renderOrder=10;computer.add(pixels);
+  function samplePixels(){try{const small=document.createElement('canvas');small.width=W;small.height=H;const c=small.getContext('2d');
+    c.drawImage(canvas,0,0,W,H);const data=c.getImageData(0,0,W,H)?.data;if(!data)return;
+    for(let i=0;i<count;i++)colors.set([data[i*4]/255,data[i*4+1]/255,data[i*4+2]/255],i*3);pixelGeometry.attributes.color.needsUpdate=true;}catch{}}
+  drawDisplay();samplePixels();
   const cameraDot=new THREE.Mesh(new THREE.SphereGeometry(.016,12,8),new THREE.MeshBasicMaterial({color:'#637d91'}));cameraDot.position.set(0,1.34,.15);computer.add(cameraDot);
   const keyboard=box(2.0,.055,.65,-.15,-2.00,1.12);keyboard.rotation.x=.06;
   const keys=new THREE.InstancedMesh(new THREE.BoxGeometry(.115,.018,.105),new THREE.MeshStandardMaterial({color:'#293541',roughness:.5}),60);
@@ -53,13 +95,18 @@ export function createComputer(THREE,onReady=()=>{}){
   const mouse=new THREE.Mesh(new THREE.SphereGeometry(.22,24,16),metal);mouse.scale.set(.75,.24,1.3);mouse.position.set(1.25,-1.97,1.09);computer.add(mouse);
   // Un fin anneau de lumière sur la tranche, pas une géométrie flottante arbitraire.
   const led=new THREE.Mesh(new THREE.BoxGeometry(.52,.012,.012),new THREE.MeshBasicMaterial({color:'#edc99a'}));led.position.set(0,-1.37,.15);computer.add(led);
-  function update(progress,time,mobile=false){
+  // handoff > 0 : l'écran couvre la vue ; seul l'envol des pixels reste dessiné, par-dessus le bureau HTML.
+  function update(progress,time,mobile=false,handoff=0){
+    const overlay=handoff>0;background.visible=dust.visible=!overlay;computer.children.forEach(c=>{c.visible=!overlay||c===pixels||c===backdrop;});backdropOpacity.value=1-handoff;
     const pose=entryPose(progress,mobile,camera.aspect);computer.position.set(mobile?0:1.5,mobile?-.42:.65,0);
     computer.rotation.set((1-pose.travel)*.018,(1-pose.travel)*-.075,0);
     camera.position.set(pose.x,pose.y,pose.z);camera.lookAt(pose.lookX,pose.lookY,.147);camera.rotation.z+=pose.roll;
     uniforms.aspect.value=camera.aspect;uniforms.zoom.value=1+pose.travel*.12;
+    burst.value=burstPhase(progress);led.material.color.setStyle(burst.value>0?'#ffd9a8':'#edc99a');
     shell.material.roughness=.24;dust.rotation.y=pose.travel*.08;warm.intensity=55+pose.travel*8;
     return pose;
   }
-  return {scene,camera,update};
+  // Taille des pixels à l'écran : dépend de la hauteur réelle du rendu.
+  function setPixelHeight(px){pixelScale.value=px/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov)/2));}
+  return {scene,camera,update,setPixelHeight};
 }
